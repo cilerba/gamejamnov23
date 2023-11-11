@@ -11,6 +11,7 @@ var can_double_jump = true;
 var double_jump_velocity = jump_velocity * 0.65;
 
 var can_wall_jump = true;
+var wall_jump_push = 1000.0;
 
 #inventory variables
 var has_key = 0;
@@ -59,6 +60,6 @@ func wall_jump():
 	var wall_normal = get_wall_normal();
 	if is_on_wall() && can_wall_jump == true:
 		if Input.is_action_just_pressed("ui_accept"):
-			velocity.x = wall_normal.x * speed * 2;
+			velocity.x = wall_normal.x * wall_jump_push;
 			velocity.y = jump_velocity;
 			can_wall_jump = false;
