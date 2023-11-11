@@ -1,4 +1,5 @@
 extends Area2D
+@export var destination: PackedScene;
 
 var entered = false;
 
