@@ -75,6 +75,3 @@ destination = ExtResource("7_ide84")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("7_lc56y")
-
-[connection signal="body_entered" from="Key" to="Player" method="_on_key_body_entered"]
-[connection signal="body_entered" from="Spike" to="Player" method="_on_spike_body_entered"]
