@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqvkbjjjsl6pd"]
+[gd_scene load_steps=7 format=3 uid="uid://dqvkbjjjsl6pd"]
 
 [ext_resource type="Script" path="res://scripts/player_mvmt.gd" id="1_w28a5"]
 [ext_resource type="Texture2D" uid="uid://t6qkudlxt2d5" path="res://sprites/player.png" id="2_2wicj"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_xe7v7"]
-[ext_resource type="Script" path="res://spike_col.gd" id="4_0wflp"]
+[ext_resource type="PackedScene" uid="uid://ctvoyb2udd3jw" path="res://scenes/obstacle.tscn" id="4_8vcf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah73a"]
-size = Vector2(16, 27)
+size = Vector2(16, 26.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ncyp8"]
+radius = 6.02772
 
 [node name="World" type="Node2D"]
 
@@ -14,10 +17,11 @@ size = Vector2(16, 27)
 script = ExtResource("1_w28a5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(0, 16)
 texture = ExtResource("2_2wicj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 2.5)
+position = Vector2(0, 18.75)
 shape = SubResource("RectangleShape2D_ah73a")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -25,7 +29,7 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="Platform" parent="." instance=ExtResource("3_xe7v7")]
-position = Vector2(1, -24)
+position = Vector2(1, -23)
 
 [node name="Platform" parent="Platform" instance=ExtResource("3_xe7v7")]
 position = Vector2(171, -58)
@@ -33,19 +37,37 @@ position = Vector2(171, -58)
 [node name="Platform2" parent="Platform" instance=ExtResource("3_xe7v7")]
 position = Vector2(-231, 62)
 
-[node name="Obstacle" type="StaticBody2D" parent="."]
+[node name="Obstacle" parent="." instance=ExtResource("4_8vcf1")]
+position = Vector2(-58, 26)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle"]
-position = Vector2(-27, 23)
-scale = Vector2(0.5, 0.75)
-polygon = PackedVector2Array(0, 0, -5, 10, 5, 10)
+[node name="Obstacle2" parent="Obstacle" instance=ExtResource("4_8vcf1")]
+position = Vector2(5, 0)
 
-[node name="Spike" type="Area2D" parent="Obstacle"]
-script = ExtResource("4_0wflp")
+[node name="Obstacle3" parent="Obstacle" instance=ExtResource("4_8vcf1")]
+position = Vector2(10, 0)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle/Spike"]
-position = Vector2(-27, 21.9219)
-scale = Vector2(0.25, 0.390625)
-polygon = PackedVector2Array(0, 0, -5, 10, 5, 10)
+[node name="Obstacle4" parent="Obstacle" instance=ExtResource("4_8vcf1")]
+position = Vector2(15, 0)
 
-[connection signal="body_entered" from="Obstacle/Spike" to="Player" method="_on_spike_body_entered"]
+[node name="Obstacle5" parent="Obstacle" instance=ExtResource("4_8vcf1")]
+position = Vector2(113, -17)
+rotation = -1.5708
+
+[node name="Obstacle6" parent="Obstacle" instance=ExtResource("4_8vcf1")]
+position = Vector2(113, -22)
+rotation = -1.5708
+
+[node name="Obstacle7" parent="Obstacle" instance=ExtResource("4_8vcf1")]
+position = Vector2(113, -27)
+rotation = -1.5708
+
+[node name="Key" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key"]
+position = Vector2(106, -41)
+scale = Vector2(0.68, 1.2)
+shape = SubResource("CircleShape2D_ncyp8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Key"]
+
+[connection signal="body_entered" from="Key" to="Player" method="_on_key_body_entered"]

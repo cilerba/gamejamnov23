@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctvoyb2udd3jw"]
+
+[ext_resource type="Script" path="res://spike_col.gd" id="1_6jcou"]
+
+[node name="Obstacle" type="StaticBody2D"]
+position = Vector2(-30, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.6875)
+polygon = PackedVector2Array(0, 0, -5, 10, 5, 10)
+
+[node name="Spike" type="Area2D" parent="."]
+position = Vector2(0, 2)
+script = ExtResource("1_6jcou")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike"]
+position = Vector2(0, -3.86035)
+scale = Vector2(0.25, 0.379883)
+polygon = PackedVector2Array(0, 0, -5, 10, 5, 10)
