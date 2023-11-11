@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctvoyb2udd3jw"]
 
-[ext_resource type="Script" path="res://spike_col.gd" id="1_6jcou"]
+[ext_resource type="Script" path="res://scripts/spike_col.gd" id="1_6jcou"]
 
 [node name="Obstacle" type="StaticBody2D"]
 position = Vector2(-30, 0)

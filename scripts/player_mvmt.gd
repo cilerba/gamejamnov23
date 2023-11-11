@@ -33,7 +33,8 @@ func _physics_process(delta):
 
 #collision with obstacle
 func _on_spike_body_entered(body):
-	print("ouchie!");
+	if (body.get_name() == "Player"):
+		print("ouchie!");
 
 #collision with key
 func _on_key_body_entered(body):
