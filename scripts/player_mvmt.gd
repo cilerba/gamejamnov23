@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 155.0;
-const JUMP_VELOCITY = -350.0;
+const SPEED = 150.0;
+const JUMP_VELOCITY = -375.0;
 const ACCELERATION = 0.7;
 const FRICTION = 0.15;
 
@@ -28,3 +28,6 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0.0, FRICTION);
 
 	move_and_slide();
+
+func collisions():
+	
