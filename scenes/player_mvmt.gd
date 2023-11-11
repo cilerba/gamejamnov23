@@ -28,3 +28,7 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0.0, FRICTION);
 
 	move_and_slide();
+	
+	func collision():
+		
+		
