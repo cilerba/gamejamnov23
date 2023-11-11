@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dahkr8n38svs8"]
+[gd_scene load_steps=9 format=3 uid="uid://dahkr8n38svs8"]
 
 [ext_resource type="Script" path="res://scripts/player_mvmt.gd" id="1_2yioc"]
 [ext_resource type="Texture2D" uid="uid://t6qkudlxt2d5" path="res://sprites/player.png" id="2_875nh"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_ic4xy"]
-[ext_resource type="Script" path="res://scripts/spike_col.gd" id="4_ptpi3"]
-[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="5_l4yt3"]
-[ext_resource type="PackedScene" uid="uid://dqvkbjjjsl6pd" path="res://scenes/world.tscn" id="6_2w7hf"]
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="4_brohd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2itx"]
 size = Vector2(16, 26.5)
@@ -15,6 +13,8 @@ size = Vector2(20, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81rmk"]
 size = Vector2(20, 8)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k56qw"]
 
 [node name="World2" type="Node2D"]
 
@@ -39,7 +39,7 @@ position = Vector2(-2, -17)
 
 [node name="Spike" type="Area2D" parent="." groups=["obstacles"]]
 position = Vector2(113, 6)
-script = ExtResource("4_ptpi3")
+script = ExtResource("4_brohd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
 position = Vector2(-88, 27)
@@ -51,8 +51,8 @@ position = Vector2(-88, 27)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spike/StaticBody2D"]
 shape = SubResource("RectangleShape2D_81rmk")
 
-[node name="Teleport" parent="." instance=ExtResource("5_l4yt3")]
-position = Vector2(76, 19)
-destination = ExtResource("6_2w7hf")
+[node name="Teleport" type="Area2D" parent="."]
+position = Vector2(261, -48)
 
-[editable path="Teleport"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport"]
+shape = SubResource("CapsuleShape2D_k56qw")
