@@ -5,7 +5,8 @@
 [ext_resource type="Script" path="res://scripts/spike_col.gd" id="3_hwg16"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_xe7v7"]
 [ext_resource type="Script" path="res://scripts/key.gd" id="4_5ay7h"]
-[ext_resource type="Script" path="res://scripts/teleport.gd" id="6_fgyfw"]
+[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="6_psmnq"]
+[ext_resource type="PackedScene" uid="uid://dahkr8n38svs8" path="res://scenes/world_2.tscn" id="7_ide84"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_lc56y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah73a"]
@@ -19,8 +20,6 @@ size = Vector2(20, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avsxu"]
 size = Vector2(20, 8)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nw3xq"]
 
 [node name="World1" type="Node2D"]
 
@@ -71,12 +70,8 @@ position = Vector2(-88, 27)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spike/StaticBody2D"]
 shape = SubResource("RectangleShape2D_avsxu")
 
-[node name="Teleport" type="Area2D" parent="."]
-position = Vector2(261, -48)
-script = ExtResource("6_fgyfw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport"]
-shape = SubResource("CapsuleShape2D_nw3xq")
+[node name="Teleport" parent="." instance=ExtResource("6_psmnq")]
+destination = ExtResource("7_ide84")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("7_lc56y")

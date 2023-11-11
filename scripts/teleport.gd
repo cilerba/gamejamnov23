@@ -21,4 +21,4 @@ func _process(delta):
 	#if player is in the teleport area and hits enter, they teleport to a new map
 	if entered == true:
 		if Input.is_action_just_pressed("ui_accept"):
-			get_tree().change_scene_to_file("res://scenes/world_2.tscn");
+			get_tree().change_scene_to_packed(destination)
