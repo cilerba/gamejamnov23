@@ -1,20 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dahkr8n38svs8"]
+[gd_scene load_steps=7 format=3 uid="uid://dahkr8n38svs8"]
 
 [ext_resource type="Script" path="res://scripts/player_mvmt.gd" id="1_2yioc"]
 [ext_resource type="Texture2D" uid="uid://t6qkudlxt2d5" path="res://sprites/player.png" id="2_875nh"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_ic4xy"]
-[ext_resource type="Script" path="res://scripts/spike.gd" id="4_6a6vm"]
+[ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="4_o1voj"]
+[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="5_ilypf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2itx"]
 size = Vector2(16, 26.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaobs"]
-size = Vector2(20, 9)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_81rmk"]
-size = Vector2(20, 8)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k56qw"]
 
 [node name="World2" type="Node2D"]
 
@@ -31,28 +24,13 @@ position = Vector2(0, 18.75)
 shape = SubResource("RectangleShape2D_w2itx")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="Platform" parent="." instance=ExtResource("3_ic4xy")]
 position = Vector2(-2, -17)
 
-[node name="Spike" type="Area2D" parent="." groups=["obstacles"]]
-position = Vector2(113, 6)
-script = ExtResource("4_6a6vm")
+[node name="Spike" parent="." instance=ExtResource("4_o1voj")]
+position = Vector2(138, 6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
-position = Vector2(-88, 27)
-shape = SubResource("RectangleShape2D_eaobs")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Spike"]
-position = Vector2(-88, 27)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike/StaticBody2D"]
-shape = SubResource("RectangleShape2D_81rmk")
-
-[node name="Teleport" type="Area2D" parent="."]
-position = Vector2(261, -48)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport"]
-shape = SubResource("CapsuleShape2D_k56qw")
+[node name="Teleport" parent="." instance=ExtResource("5_ilypf")]
+position = Vector2(98, 21)

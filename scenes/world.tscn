@@ -1,25 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqvkbjjjsl6pd"]
+[gd_scene load_steps=10 format=3 uid="uid://dqvkbjjjsl6pd"]
 
 [ext_resource type="Script" path="res://scripts/player_mvmt.gd" id="1_w28a5"]
 [ext_resource type="Texture2D" uid="uid://t6qkudlxt2d5" path="res://sprites/player.png" id="2_2wicj"]
-[ext_resource type="Script" path="res://scripts/obstacle.gd" id="3_hwg16"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_xe7v7"]
 [ext_resource type="Script" path="res://scripts/key.gd" id="4_5ay7h"]
-[ext_resource type="PackedScene" path="res://scenes/teleport.tscn" id="6_psmnq"]
+[ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="5_d2f4b"]
+[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="6_psmnq"]
 [ext_resource type="PackedScene" uid="uid://dahkr8n38svs8" path="res://scenes/world_2.tscn" id="7_ide84"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_lc56y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah73a"]
 size = Vector2(16, 26.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncyp8"]
 radius = 6.02772
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ibl6"]
-size = Vector2(20, 9)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_avsxu"]
-size = Vector2(20, 8)
 
 [node name="World1" type="Node2D"]
 
@@ -56,21 +49,7 @@ shape = SubResource("CircleShape2D_ncyp8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Key"]
 
-[node name="Spike" type="Area2D" parent="." groups=["obstacles"]]
-script = ExtResource("3_hwg16")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
-position = Vector2(-88, 27)
-shape = SubResource("RectangleShape2D_6ibl6")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Spike"]
-position = Vector2(-88, 27)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike/StaticBody2D"]
-shape = SubResource("RectangleShape2D_avsxu")
+[node name="Spike" parent="." instance=ExtResource("5_d2f4b")]
 
 [node name="Teleport" parent="." instance=ExtResource("6_psmnq")]
 destination = ExtResource("7_ide84")
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("7_lc56y")
