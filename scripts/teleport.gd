@@ -1,5 +1,5 @@
 extends Area2D
-@export var destination: PackedScene;
+@export var destination: GameManager.Rooms
 
 var entered = false;
 
@@ -21,4 +21,4 @@ func _process(delta):
 	#if player is in the teleport area and hits enter, they teleport to a new map
 	if entered == true:
 		if Input.is_action_just_pressed("ui_accept"):
-			get_tree().change_scene_to_packed(destination)
+			get_tree().change_scene_to_file(GameManager.room_dict[destination])

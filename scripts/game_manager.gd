@@ -1,11 +1,12 @@
 extends Node
 
+enum Rooms
+{
+	Room1, # = 0
+	Room2, # = 1
+}
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+var room_dict: = {
+	Rooms.Room1: "res://scenes/room.tscn",
+	Rooms.Room2: "res://scenes/room_2.tscn",
+}
