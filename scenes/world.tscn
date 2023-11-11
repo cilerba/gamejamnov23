@@ -1,16 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqvkbjjjsl6pd"]
+[gd_scene load_steps=11 format=3 uid="uid://dqvkbjjjsl6pd"]
 
-[ext_resource type="Script" path="res://scripts/player_mvmt.gd" id="1_w28a5"]
-[ext_resource type="Texture2D" uid="uid://t6qkudlxt2d5" path="res://sprites/player.png" id="2_2wicj"]
+[ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5t4rg"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_xe7v7"]
 [ext_resource type="Script" path="res://scripts/key.gd" id="4_5ay7h"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="5_d2f4b"]
 [ext_resource type="PackedScene" path="res://scenes/teleport.tscn" id="6_psmnq"]
 [ext_resource type="PackedScene" uid="uid://dahkr8n38svs8" path="res://scenes/world_2.tscn" id="7_ide84"]
 [ext_resource type="Texture2D" uid="uid://dr2p23afx6fhw" path="res://sprites/autotile_ground.png" id="8_euq2p"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah73a"]
-size = Vector2(13, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncyp8"]
 radius = 6.02772
@@ -497,19 +493,7 @@ sources/0 = SubResource("TileSetAtlasSource_1r71e")
 
 [node name="World1" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_w28a5")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(0, 16)
-texture = ExtResource("2_2wicj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0.5, 20)
-shape = SubResource("RectangleShape2D_ah73a")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
+[node name="Player" parent="." instance=ExtResource("1_5t4rg")]
 
 [node name="Platform" parent="." instance=ExtResource("3_xe7v7")]
 position = Vector2(4, 135)
