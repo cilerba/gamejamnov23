@@ -30,15 +30,3 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0.0, FRICTION);
 
 	move_and_slide();
-
-#collision with obstacle
-func _on_spike_body_entered(body):
-	if (body.get_name() == "Player"):
-		print("ouchie!");
-
-#collision with key
-func _on_key_body_entered(body):
-	print("got key!");
-	has_key += 1;
-	print(has_key);
-	
