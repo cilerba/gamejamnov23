@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqvkbjjjsl6pd"]
+[gd_scene load_steps=14 format=3 uid="uid://dqvkbjjjsl6pd"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5t4rg"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_xe7v7"]
@@ -8,9 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="6_psmnq"]
 [ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="7_qvym7"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="7_uhqmi"]
+[ext_resource type="LabelSettings" uid="uid://c4hcu4nvxxe1a" path="res://labelsettings_main.tres" id="9_3lrvx"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="9_t2465"]
+[ext_resource type="FontFile" uid="uid://bpafijb2ons1s" path="res://fonts/PressStart2P-Regular.ttf" id="11_6a5jg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncyp8"]
 radius = 6.02772
+
+[sub_resource type="LabelSettings" id="LabelSettings_rnpxv"]
+font = ExtResource("11_6a5jg")
+font_size = 8
+font_color = Color(0.462745, 0.462745, 0.462745, 1)
 
 [node name="World1" type="Node2D"]
 
@@ -57,3 +65,49 @@ layer_0/tile_data = PackedInt32Array(-720910, 2, 0, -655374, 2, 0, -589838, 2, 0
 
 [node name="Camera2D" parent="." instance=ExtResource("7_qvym7")]
 position_smoothing_speed = 20.0
+
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("hearts")]
+script = ExtResource("9_t2465")
+hearts = [NodePath("TextureRect"), NodePath("TextureRect2"), NodePath("TextureRect3")]
+
+[node name="CurrentTime" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 15.0
+grow_horizontal = 0
+label_settings = ExtResource("9_3lrvx")
+horizontal_alignment = 2
+
+[node name="BestTime" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_top = 17.0
+offset_right = -4.0
+offset_bottom = 28.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_rnpxv")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="ColorRect" parent="HUD"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="TextureRect2" type="ColorRect" parent="HUD"]
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 20.0
+
+[node name="TextureRect3" type="ColorRect" parent="HUD"]
+offset_left = 44.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 20.0
