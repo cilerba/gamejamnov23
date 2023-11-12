@@ -1,9 +1,11 @@
 extends Area2D
 @export var destination: GameManager.Rooms
 
+
 var entered = false;
 
 var sprite2d: Sprite2D
+var sprite_anim: AnimatedSprite2D
 var sine_time: float
 
 #connect signals
@@ -12,12 +14,15 @@ func _ready():
 	body_exited.connect(on_body_exit);
 	
 	sprite2d = get_child(1)
+	sprite_anim = sprite2d.get_child(0)
 	
 #player enters the teleport area
 func on_body_enter(body : CharacterBody2D):
 	if (GameManager.keys > 0):
 		sprite2d.frame_coords.x = 1
+		sprite_anim.play()
 		GameManager.hide_key.emit()
+	
 	
 	body.is_interacting = true
 	entered = true;

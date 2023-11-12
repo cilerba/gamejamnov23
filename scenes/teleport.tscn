@@ -1,9 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt153ve2b75au"]
+[gd_scene load_steps=14 format=3 uid="uid://bt153ve2b75au"]
 
 [ext_resource type="Script" path="res://scripts/teleport.gd" id="1_lir2g"]
 [ext_resource type="Texture2D" uid="uid://g55isy68njun" path="res://sprites/obj_crystal.png" id="2_w0a5u"]
+[ext_resource type="Texture2D" uid="uid://b6dfnj8jx0rsr" path="res://sprites/crystal_anim.png" id="3_og5qb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nw3xq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx6te"]
+atlas = ExtResource("3_og5qb")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fe8d"]
+atlas = ExtResource("3_og5qb")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdk3a"]
+atlas = ExtResource("3_og5qb")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b812f"]
+atlas = ExtResource("3_og5qb")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ishh"]
+atlas = ExtResource("3_og5qb")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qc2j"]
+atlas = ExtResource("3_og5qb")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2s5l"]
+atlas = ExtResource("3_og5qb")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm1om"]
+atlas = ExtResource("3_og5qb")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fp1i5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx6te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fe8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdk3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b812f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ishh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qc2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2s5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm1om")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
 
 [node name="Teleport" type="Area2D"]
 script = ExtResource("1_lir2g")
@@ -14,3 +79,6 @@ shape = SubResource("CapsuleShape2D_nw3xq")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_w0a5u")
 hframes = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+sprite_frames = SubResource("SpriteFrames_fp1i5")
