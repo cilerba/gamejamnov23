@@ -16,4 +16,7 @@ func _process(_delta):
 			GameManager.current_time = 0.0
 			GameManager.game_running = true
 		
-		GameManager.transition(on_transition)
+		var on_complete = func():
+			GameManager.playbgm()
+		
+		GameManager.transition(on_transition, on_complete)

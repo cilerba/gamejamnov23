@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg3j8psnims47"]
+[gd_scene load_steps=10 format=3 uid="uid://bg3j8psnims47"]
 
 [ext_resource type="Script" path="res://scripts/player_mvmt.gd" id="1_mgnv3"]
 [ext_resource type="Texture2D" uid="uid://ith75wtsvj4i" path="res://sprites/player_walk.png" id="2_g38ku"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="4_0ndmq"]
 [ext_resource type="Texture2D" uid="uid://blxjf0jh5g8mp" path="res://sprites/player_stuck.png" id="4_c8i8w"]
 [ext_resource type="Texture2D" uid="uid://bbetvkbdaxrid" path="res://sprites/player_hurt.png" id="5_twntf"]
+[ext_resource type="Shape2D" uid="uid://bddpsvw4d5rx5" path="res://player_rect_walk.tres" id="6_dnp4g"]
+[ext_resource type="Texture2D" uid="uid://dd218liv5wy0a" path="res://sprites/player_walk_duck.png" id="6_icguj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah73a"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ulqw"]
 size = Vector2(13, 24)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
@@ -17,6 +19,7 @@ sprite_jump = ExtResource("2_to18f")
 sprite_walk = ExtResource("2_g38ku")
 sprite_wall = ExtResource("4_c8i8w")
 sprite_hurt = ExtResource("5_twntf")
+sprite_duck = ExtResource("6_icguj")
 
 [node name="Smoothing2D" type="Node2D" parent="."]
 script = ExtResource("4_0ndmq")
@@ -29,4 +32,13 @@ hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 20)
-shape = SubResource("RectangleShape2D_ah73a")
+shape = SubResource("RectangleShape2D_2ulqw")
+
+[node name="CollisionShape2D_DUCK" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 20)
+shape = ExtResource("6_dnp4g")
+disabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-6, 8)
+target_position = Vector2(13, 0)

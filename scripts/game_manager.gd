@@ -62,8 +62,7 @@ func _ready():
 	
 	bgm = AudioStreamPlayer.new()
 	add_child(bgm)
-	bgm.stream = load("res://sounds/cavegame.wav")
-	bgm.play()
+	playbgm()
 		
 	game_running = true
 	health = MAX_HEARTS
@@ -108,6 +107,10 @@ func play(path):
 
 	print("No available channels!")	
 	return false
+
+func playbgm():
+	bgm.stream = load("res://sounds/cavegame.wav")
+	bgm.play()
 
 func stopbgm():
 	bgm.stop()

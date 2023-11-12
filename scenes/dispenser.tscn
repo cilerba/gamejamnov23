@@ -6,6 +6,7 @@
 [node name="Dispenser" type="Sprite2D" node_paths=PackedStringArray("notifier")]
 position = Vector2(-72, 24)
 texture = ExtResource("1_pb0hx")
+hframes = 3
 script = ExtResource("2_xaoxf")
 dispense_interval = 2.0
 notifier = NodePath("VisibleOnScreenNotifier2D")

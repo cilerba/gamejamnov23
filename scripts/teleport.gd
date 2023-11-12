@@ -17,19 +17,24 @@ func _ready():
 	sprite_anim = sprite2d.get_child(0)
 	
 #player enters the teleport area
-func on_body_enter(body : CharacterBody2D):
+func on_body_enter(body):
+	if (body.get_name() != "Player"):
+		return
+	
 	if (GameManager.keys > 0):
 		sprite2d.frame_coords.x = 1
 		sprite_anim.play()
 		GameManager.hide_key.emit()
 		GameManager.play("res://sounds/placecrystal.wav")
 	
-	
 	body.is_interacting = true
 	entered = true;
 	
 #player exits the teleport area
-func on_body_exit(body : CharacterBody2D):
+func on_body_exit(body):
+	if (body.get_name() != "Player"):
+		return
+	
 	body.is_interacting = false
 	entered = false;
 
