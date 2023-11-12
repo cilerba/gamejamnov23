@@ -16,7 +16,6 @@ func _ready():
 func _process(delta):
 	if (GameManager.game_running):
 		curr_label.text = GameManager.time_convert(GameManager.current_time)
-		
 		best_label.text = GameManager.time_convert(GameManager.best_time)
 
 func update_hp():

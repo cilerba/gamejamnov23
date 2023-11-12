@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnkfnyn4mk316"]
+
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_h8oae"]
+[ext_resource type="LabelSettings" uid="uid://c4hcu4nvxxe1a" path="res://labelsettings_main.tres" id="2_aq7sn"]
+[ext_resource type="FontFile" uid="uid://bpafijb2ons1s" path="res://fonts/PressStart2P-Regular.ttf" id="3_a657q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rnpxv"]
+font = ExtResource("3_a657q")
+font_size = 8
+font_color = Color(0.462745, 0.462745, 0.462745, 1)
+
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("hearts")]
+script = ExtResource("1_h8oae")
+hearts = [NodePath("TextureRect"), NodePath("TextureRect2"), NodePath("TextureRect3")]
+
+[node name="CurrentTime" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 15.0
+grow_horizontal = 0
+label_settings = ExtResource("2_aq7sn")
+horizontal_alignment = 2
+
+[node name="BestTime" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_top = 17.0
+offset_right = -4.0
+offset_bottom = 28.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_rnpxv")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="ColorRect" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="TextureRect2" type="ColorRect" parent="."]
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 20.0
+
+[node name="TextureRect3" type="ColorRect" parent="."]
+offset_left = 44.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 20.0
