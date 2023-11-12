@@ -7,11 +7,11 @@ func _ready():
 	body_exited.connect(on_body_exit);
 
 func on_body_enter(body):
-	if (body.get_name() == "Player"):
+	if (body.get_name() == "Player" && !GameManager.invincible):
 		on_hurt(body);
 		pass;
 func on_body_exit(body):
-	if (body.get_name() == "Player"):
+	if (body.get_name() == "Player" && !GameManager.invincible):
 		on_hurt_exit(body);
 		pass;
 

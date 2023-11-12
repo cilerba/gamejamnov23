@@ -8,6 +8,7 @@ var camera: Camera2D
 @export var sprite_jump: Texture2D
 @export var sprite_walk: Texture2D
 @export var sprite_wall: Texture2D
+@export var sprite_hurt: Texture2D
 
 #move variables
 var speed = 125.0;
@@ -42,8 +43,11 @@ var fall_timer: float # Timer to see how long the player can hold onto the wall
 var fall_cap: float = 0.8 # The limit at which the timer should count up to
 
 var is_interacting: bool # Set in teleport script, if true it disables jumping when interacting with an object/teleporting
+var is_hurt: bool
+var flicker: Tween
 
 func _ready():
+	flicker = create_tween()
 	timer_on = true;
 	camera = get_node("../Camera2D")
 	
@@ -57,9 +61,14 @@ func _ready():
 	await timer.timeout
 	can_move = true
 	
+	GameManager.player_hurt.connect(hurt)
+	
 
 #timer
 func _process(delta):
+	if (is_hurt):
+		return
+	
 	# This if statement is just to make sure camera exists before setting its position
 	# Just being a little cautious :o)
 	if (camera):
@@ -90,7 +99,10 @@ func _process(delta):
 		is_holding = fall_timer < fall_cap
 	
 #movement
-func _physics_process(delta):	
+func _physics_process(delta):
+	if (is_hurt):
+		return
+	
 	#add gravity when in air
 	if not is_on_floor():
 		velocity.y += gravity * delta;
@@ -123,6 +135,9 @@ func _physics_process(delta):
 	
 
 func anim_player(delta):
+	if (is_hurt):
+		return
+		
 	if (sign(velocity.x) != 0):
 		sprite.flip_h = false if sign(velocity.x) == 1 else true
 	
@@ -172,3 +187,39 @@ func wall_jump():
 			
 			timer_on = true;
 			can_wall_jump = false;
+
+func hurt():
+	if (GameManager.health <= 0):
+		flicker.stop()
+		is_hurt = true
+		can_animate = false
+		sprite.hframes = 1
+		sprite.frame_coords = Vector2i(0, 0)
+		sprite.texture = sprite_hurt
+		visible = true
+		get_child(0).set_enabled(false)
+		var fall_tween = create_tween()
+		fall_tween.tween_property(sprite, "position", sprite.position - Vector2(0, 32), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		fall_tween.tween_property(sprite, "position", sprite.position + Vector2(0, 160), 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
+		var spin_tween = create_tween()
+		spin_tween.tween_property(sprite, "rotation_degrees", 270 * 4, 2.5)
+		await fall_tween.finished
+	
+		var on_transition = func(): get_tree().change_scene_to_file(GameManager.room_dict[GameManager.Rooms.GameOver])
+		
+		GameManager.transition(on_transition)
+	elif (!is_hurt):
+		GameManager.invincible = true
+		var delay = 0.1
+		if (flicker.is_running()):
+			flicker.stop()
+		flicker = create_tween()
+		flicker.tween_property(self, "visible", false, 0).set_delay(delay)
+		flicker.tween_property(self, "visible", true, 0).set_delay(delay)
+		flicker.tween_property(self, "visible", false, 0).set_delay(delay)
+		flicker.tween_property(self, "visible", true, 0).set_delay(delay)
+		flicker.tween_property(self, "visible", false, 0).set_delay(delay)
+		flicker.tween_property(self, "visible", true, 0).set_delay(delay)
+		flicker.tween_callback(func():
+			GameManager.invincible = false)
+		

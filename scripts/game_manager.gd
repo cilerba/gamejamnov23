@@ -30,12 +30,10 @@ var health: int:
 		
 		if (health <= 0):
 			game_running = false
-			var on_transition = func(): get_tree().change_scene_to_file(room_dict[Rooms.GameOver])
-			
-			transition(on_transition)
 	get:
 		return health
 
+var invincible: bool
 var game_running: bool
 var keys: int
 
