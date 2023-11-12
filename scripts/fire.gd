@@ -20,7 +20,8 @@ func _process(delta):
 
 func on_hurt(body):
 	in_fire = true;
-	GameManager.health -= 1;
+	if (!GameManager.invincible):
+		GameManager.health -= 1;
 
 func on_hurt_exit(body):
 	in_fire = false;
