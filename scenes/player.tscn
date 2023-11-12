@@ -18,6 +18,7 @@ sprite_walk = ExtResource("2_g38ku")
 script = ExtResource("4_0ndmq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Smoothing2D"]
+z_index = 1
 position = Vector2(0, 16)
 texture = ExtResource("2_g38ku")
 hframes = 4

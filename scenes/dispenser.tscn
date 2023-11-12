@@ -3,8 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://by468pjisiv3q" path="res://sprites/obj_dispenser.png" id="1_pb0hx"]
 [ext_resource type="Script" path="res://scripts/dispenser.gd" id="2_xaoxf"]
 
-[node name="Dispenser" type="Sprite2D"]
+[node name="Dispenser" type="Sprite2D" node_paths=PackedStringArray("notifier")]
 position = Vector2(-72, 24)
 texture = ExtResource("1_pb0hx")
 script = ExtResource("2_xaoxf")
 dispense_interval = 2.0
+notifier = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(7, 0)
+scale = Vector2(0.3, 0.6)

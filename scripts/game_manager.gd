@@ -44,6 +44,7 @@ var best_time: float
 
 signal player_hurt
 signal do_transition
+signal hide_key
 
 func _ready():
 	game_running = true

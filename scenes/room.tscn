@@ -33,6 +33,7 @@ position = Vector2(-231, 62)
 position = Vector2(-88, 24)
 
 [node name="Teleport" parent="." instance=ExtResource("6_psmnq")]
+position = Vector2(-32, 9)
 destination = 1
 
 [node name="LevelTileMap" type="TileMap" parent="."]

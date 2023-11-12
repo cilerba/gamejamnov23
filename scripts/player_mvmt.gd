@@ -41,6 +41,8 @@ var is_holding: bool # If the player is sliding down
 var fall_timer: float # Timer to see how long the player can hold onto the wall
 var fall_cap: float = 0.8 # The limit at which the timer should count up to
 
+var is_interacting: bool # Set in teleport script, if true it disables jumping when interacting with an object/teleporting
+
 func _ready():
 	timer_on = true;
 	camera = get_node("../Camera2D")
@@ -105,7 +107,7 @@ func _physics_process(delta):
 			timer = 0.0;
 		can_double_jump = true;
 		can_wall_jump = true;
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") && !is_interacting:
 			velocity.y = jump_velocity;
 	#double jump
 	double_jump();
