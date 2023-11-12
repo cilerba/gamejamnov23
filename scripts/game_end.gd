@@ -5,6 +5,7 @@ extends Node2D
 @export var anim: AnimatedSprite2D
 
 func _ready():
+	GameManager.play("res://sounds/twinkle.wav")
 	current_time.text = GameManager.time_convert(GameManager.current_time)
 	best_time.text = GameManager.time_convert(GameManager.best_time)
 	anim.play()
