@@ -47,7 +47,6 @@ var is_hurt: bool
 var flicker: Tween
 
 func _ready():
-	flicker = create_tween()
 	timer_on = true;
 	camera = get_node("../Camera2D")
 	
@@ -189,15 +188,15 @@ func wall_jump():
 			can_wall_jump = false;
 
 func hurt():
-	if (GameManager.health <= 0):
-		flicker.stop()
+	if (GameManager.health <= 0 && !is_hurt):
+		if (flicker && flicker.is_running):
+			flicker.stop()
 		is_hurt = true
 		can_animate = false
 		sprite.hframes = 1
 		sprite.frame_coords = Vector2i(0, 0)
 		sprite.texture = sprite_hurt
 		visible = true
-		get_child(0).set_enabled(false)
 		var fall_tween = create_tween()
 		fall_tween.tween_property(sprite, "position", sprite.position - Vector2(0, 32), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 		fall_tween.tween_property(sprite, "position", sprite.position + Vector2(0, 160), 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
@@ -208,18 +207,18 @@ func hurt():
 		var on_transition = func(): get_tree().change_scene_to_file(GameManager.room_dict[GameManager.Rooms.GameOver])
 		
 		GameManager.transition(on_transition)
-	elif (!is_hurt):
+	else:
 		GameManager.invincible = true
 		var delay = 0.1
-		if (flicker.is_running()):
+		if (flicker && flicker.is_running()):
 			flicker.stop()
 		flicker = create_tween()
-		flicker.tween_property(self, "visible", false, 0).set_delay(delay)
-		flicker.tween_property(self, "visible", true, 0).set_delay(delay)
-		flicker.tween_property(self, "visible", false, 0).set_delay(delay)
-		flicker.tween_property(self, "visible", true, 0).set_delay(delay)
-		flicker.tween_property(self, "visible", false, 0).set_delay(delay)
-		flicker.tween_property(self, "visible", true, 0).set_delay(delay)
+		flicker.tween_property(self, "modulate", Color.TRANSPARENT, 0).set_delay(delay)
+		flicker.tween_property(self, "modulate", Color.WHITE, 0).set_delay(delay)
+		flicker.tween_property(self, "modulate", Color.TRANSPARENT, 0).set_delay(delay)
+		flicker.tween_property(self, "modulate", Color.WHITE, 0).set_delay(delay)
+		flicker.tween_property(self, "modulate", Color.TRANSPARENT, 0).set_delay(delay)
+		flicker.tween_property(self, "modulate", Color.WHITE, 0).set_delay(delay)
 		flicker.tween_callback(func():
 			GameManager.invincible = false)
 		
