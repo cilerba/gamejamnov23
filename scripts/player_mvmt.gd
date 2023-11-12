@@ -156,7 +156,7 @@ func move_player():
 
 	
 func double_jump():
-	if not is_on_floor() && can_double_jump == true:
+	if not is_on_floor() && can_double_jump == true && not is_on_wall_only():
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = double_jump_velocity;
 			can_double_jump = false;
