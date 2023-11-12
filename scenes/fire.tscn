@@ -1,13 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwp25rx2o2gjd"]
+[gd_scene load_steps=11 format=3 uid="uid://bwp25rx2o2gjd"]
 
 [ext_resource type="Script" path="res://scripts/fire.gd" id="1_yvf0v"]
 [ext_resource type="Texture2D" uid="uid://brfc2o0v2uph2" path="res://obj_fire_sheet.png" id="2_kao6v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj71k"]
-size = Vector2(14, 17)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oe555"]
-size = Vector2(12, 3)
+size = Vector2(14, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcctj"]
 atlas = ExtResource("2_kao6v")
@@ -65,15 +62,8 @@ script = ExtResource("1_yvf0v")
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, 12.5)
+position = Vector2(7, 13)
 shape = SubResource("RectangleShape2D_hj71k")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(7, 9)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 10.5)
-shape = SubResource("RectangleShape2D_oe555")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7, 6)
