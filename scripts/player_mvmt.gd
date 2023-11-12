@@ -9,9 +9,15 @@ var camera: Camera2D
 @export var sprite_walk: Texture2D
 @export var sprite_wall: Texture2D
 @export var sprite_hurt: Texture2D
+@export var sprite_duck: Texture2D
+
+var cs_walk: CollisionShape2D
+var cs_duck: CollisionShape2D
+var raycast: RayCast2D
 
 #move variables
 var speed = 125.0;
+var speed_slow = 75.0
 var jump_velocity = -300.0;
 var acceleration = 0.7;
 var air_acceleration = 0.35;
@@ -55,6 +61,12 @@ func _ready():
 	timer_on = true;
 	camera = get_node("../Camera2D")
 	
+	
+	GameManager.player_hurt.connect(hurt)
+	
+	cs_walk = get_child(1)
+	cs_duck = get_child(2)
+	raycast = get_child(3)
 	# Timer!
 	# This is to create a small delay when a scene is starting to prevent jumping when teleporting
 	
@@ -64,9 +76,6 @@ func _ready():
 	var timer = get_tree().create_timer(0.5)
 	await timer.timeout
 	can_move = true
-	
-	GameManager.player_hurt.connect(hurt)
-	
 
 #timer
 func _process(delta):
@@ -81,6 +90,15 @@ func _process(delta):
 	# If the player can't move, break out of '_process' to prevent the code below from executing
 	if (!can_move || ScreenTransition.is_transitioning):
 		return
+	
+	
+	
+	if (Input.is_action_pressed("ui_down")):
+		cs_duck.disabled = false
+		cs_walk.disabled = true
+	elif (!raycast.is_colliding()):
+		cs_walk.disabled = false
+		cs_duck.disabled = true
 	
 	if timer_on:
 		timer += delta;
@@ -161,18 +179,22 @@ func anim_player(delta):
 	if (sign(velocity.x) != 0):
 		sprite.flip_h = false if sign(velocity.x) == 1 else true
 	
-	if (!is_on_floor()):
-		sprite.hframes = 1
-		if (can_hold):
-			sprite.texture = sprite_wall
-		else:
-			sprite.texture = sprite_jump
-	else:
+	if (!cs_duck.disabled):
 		sprite.hframes = 4
-		sprite.texture = sprite_walk
+		sprite.texture = sprite_duck
+	else:
+		if (!is_on_floor()):
+			sprite.hframes = 1
+			if (can_hold):
+				sprite.texture = sprite_wall
+			else:
+				sprite.texture = sprite_jump
+		else:
+			sprite.hframes = 4
+			sprite.texture = sprite_walk
 	
 	# Only animate the player if they're moving and grounded
-	if (Input.get_axis("ui_left", "ui_right") != 0 && is_on_floor()):
+	if (Input.get_axis("ui_left", "ui_right") != 0 && (is_on_floor() || !cs_duck.disabled)):
 		can_animate = true
 	else:
 		can_animate = false
@@ -183,9 +205,9 @@ func move_player():
 	var dir = Input.get_axis("ui_left", "ui_right")
 	if dir:
 		if is_on_floor():
-			velocity.x = lerp(velocity.x, dir * speed, acceleration);
+			velocity.x = lerp(velocity.x, dir * (speed if cs_duck.disabled else speed_slow), acceleration);
 		if not is_on_floor():
-			velocity.x = lerp(velocity.x, dir * speed, air_acceleration);
+			velocity.x = lerp(velocity.x, dir * (speed if cs_duck.disabled else speed_slow), air_acceleration);
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction);
 
