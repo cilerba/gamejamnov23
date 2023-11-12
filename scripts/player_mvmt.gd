@@ -11,14 +11,26 @@ var can_double_jump = true;
 var double_jump_velocity = jump_velocity * 0.65;
 
 var can_wall_jump = true;
-var wall_jump_push = 1000.0;
+var wall_jump_push = 100.0;
 
 #inventory variables
 var has_key = 0;
 
 #get the gravity from the project settings
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity");
+var timer = 0.0;
+var timer_on = false;
 
+func _ready():
+	timer_on = true;
+
+#timer
+func _process(delta):
+	if timer_on:
+		timer += delta;
+		if timer >= 0.30:
+			timer_on = false;
+			timer = 0.0;
 #movement
 func _physics_process(delta):
 	#add gravity when in air
@@ -27,6 +39,9 @@ func _physics_process(delta):
 
 	#jump from floor
 	if is_on_floor():
+		if timer_on == true:
+			timer_on = false;
+			timer = 0.0;
 		can_double_jump = true;
 		can_wall_jump = true;
 		if Input.is_action_just_pressed("ui_accept"):
@@ -37,12 +52,13 @@ func _physics_process(delta):
 	#wall jump
 	wall_jump();
 	
-	#player input and movement
-	move_player();
+	if !timer_on:
+		#player input and movement
+		move_player();
 	move_and_slide();
 	
 	
-#functions
+
 	#get input direction and apply acceleration or friction
 func move_player():
 	var dir = Input.get_axis("ui_left", "ui_right")
@@ -63,9 +79,10 @@ func double_jump():
 			
 func wall_jump():
 	var wall_normal = get_wall_normal();
-	if is_on_wall() && can_wall_jump == true:
+	if is_on_wall_only() && can_wall_jump == true:
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.x = wall_normal.x * wall_jump_push;
 			velocity.y = jump_velocity;
 			
+			timer_on = true;
 			can_wall_jump = false;

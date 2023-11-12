@@ -1,30 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dahkr8n38svs8"]
+[gd_scene load_steps=5 format=3 uid="uid://bstlkn7gtdmar"]
 
-[ext_resource type="Script" path="res://scripts/player_mvmt.gd" id="1_2yioc"]
-[ext_resource type="Texture2D" uid="uid://t6qkudlxt2d5" path="res://sprites/player.png" id="2_875nh"]
+[ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5bam7"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_ic4xy"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="4_o1voj"]
-[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="5_ilypf"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2itx"]
-size = Vector2(16, 26.5)
+[ext_resource type="PackedScene" path="res://scenes/teleport.tscn" id="5_ilypf"]
 
 [node name="World2" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-38, 6)
-script = ExtResource("1_2yioc")
+[node name="Player" parent="." instance=ExtResource("1_5bam7")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(0, 16)
-texture = ExtResource("2_875nh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 18.75)
-shape = SubResource("RectangleShape2D_w2itx")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
+[node name="Timer" parent="Player" index="3"]
+wait_time = 0.049
 
 [node name="Platform" parent="." instance=ExtResource("3_ic4xy")]
 position = Vector2(-2, -17)
@@ -34,3 +20,5 @@ position = Vector2(138, 6)
 
 [node name="Teleport" parent="." instance=ExtResource("5_ilypf")]
 position = Vector2(98, 21)
+
+[editable path="Player"]
