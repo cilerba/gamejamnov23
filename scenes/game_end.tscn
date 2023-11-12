@@ -1,20 +1,46 @@
-[gd_scene load_steps=7 format=3 uid="uid://xs7kemt4xdmq"]
+[gd_scene load_steps=13 format=3 uid="uid://xs7kemt4xdmq"]
 
 [ext_resource type="Script" path="res://scripts/game_end.gd" id="1_nk3fy"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="2_dkjkk"]
 [ext_resource type="LabelSettings" uid="uid://c4hcu4nvxxe1a" path="res://labelsettings_main.tres" id="3_salbt"]
 [ext_resource type="FontFile" uid="uid://bpafijb2ons1s" path="res://fonts/PressStart2P-Regular.ttf" id="4_xa3h4"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="5_aodta"]
+[ext_resource type="Texture2D" uid="uid://dlcukse7v3ljq" path="res://sprites/splashscreen_win.png" id="6_dixba"]
+[ext_resource type="Texture2D" uid="uid://y8rxj0q2v1oq" path="res://sprites/splashscreen_win_glitter1.png" id="7_ahqc0"]
+[ext_resource type="Texture2D" uid="uid://bx403hdrp2une" path="res://sprites/splashscreen_win_glitter2.png" id="8_ttfpj"]
+[ext_resource type="Texture2D" uid="uid://kjx388ykq8wh" path="res://sprites/splashscreen_win_glitter3.png" id="9_pmadj"]
+[ext_resource type="Texture2D" uid="uid://cgvocc1kfny7t" path="res://sprites/splashscreen_win_glitter4.png" id="10_l2a2b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqcgw"]
 font = ExtResource("4_xa3h4")
 font_size = 8
 font_color = Color(0.372549, 0.372549, 0.372549, 1)
 
-[node name="GameEnd" type="Node2D" node_paths=PackedStringArray("current_time", "best_time")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_e256n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ahqc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ttfpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pmadj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l2a2b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GameEnd" type="Node2D" node_paths=PackedStringArray("current_time", "best_time", "anim")]
 script = ExtResource("1_nk3fy")
 current_time = NodePath("CanvasLayer/SCORE")
 best_time = NodePath("CanvasLayer/SCORE2")
+anim = NodePath("SplashscreenWin/AnimatedSprite2D")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_dkjkk")
@@ -28,9 +54,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -36.0
-offset_top = 40.0
+offset_top = 9.0
 offset_right = 36.0
-offset_bottom = 63.0
+offset_bottom = 32.0
 grow_horizontal = 2
 text = "GARF WINS"
 label_settings = ExtResource("3_salbt")
@@ -41,10 +67,10 @@ vertical_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -36.0
-offset_top = 110.0
-offset_right = 36.0
-offset_bottom = 133.0
+offset_left = -88.0
+offset_top = 23.0
+offset_right = 88.0
+offset_bottom = 46.0
 grow_horizontal = 2
 text = "PRESS \"SPACE\" TO TITLE"
 label_settings = ExtResource("3_salbt")
@@ -56,9 +82,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -36.0
-offset_top = 58.0
+offset_top = 41.0
 offset_right = 36.0
-offset_bottom = 81.0
+offset_bottom = 64.0
 grow_horizontal = 2
 label_settings = ExtResource("3_salbt")
 horizontal_alignment = 1
@@ -69,9 +95,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -36.0
-offset_top = 73.0
+offset_top = 56.0
 offset_right = 36.0
-offset_bottom = 96.0
+offset_bottom = 79.0
 grow_horizontal = 2
 label_settings = SubResource("LabelSettings_xqcgw")
 horizontal_alignment = 1
@@ -93,5 +119,13 @@ visible = false
 
 [node name="TextureRect3" parent="HUD" index="4"]
 visible = false
+
+[node name="SplashscreenWin" type="Sprite2D" parent="."]
+position = Vector2(120, 80)
+texture = ExtResource("6_dixba")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SplashscreenWin"]
+position = Vector2(0, 44)
+sprite_frames = SubResource("SpriteFrames_e256n")
 
 [editable path="HUD"]

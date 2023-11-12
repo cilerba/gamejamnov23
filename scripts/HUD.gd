@@ -3,7 +3,9 @@ extends CanvasLayer
 var curr_label: Label
 var best_label: Label
 
-@export var hearts: Array[CanvasItem]
+@export var hearts: Array[TextureRect]
+@export var heart_full: Texture2D
+@export var heart_empty: Texture2D
 
 func _ready():
 	curr_label = get_child(0)
@@ -20,5 +22,5 @@ func _process(delta):
 
 func update_hp():
 	for i in range(0, 3):
-		hearts[i].visible = i < GameManager.health
+		hearts[i].texture = heart_full if i < GameManager.health else heart_empty
 			
