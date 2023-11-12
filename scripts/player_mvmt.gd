@@ -108,8 +108,7 @@ func _process(delta):
 		coyote_timer = 0.0
 	else:
 		coyote_timer += delta
-		
-	print (coyote_on)
+	
 	
 #movement
 func _physics_process(delta):
