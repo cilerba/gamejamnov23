@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5bam7"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_ic4xy"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="4_o1voj"]
-[ext_resource type="PackedScene" path="res://scenes/teleport.tscn" id="5_ilypf"]
+[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="5_ilypf"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="5_ki1rv"]
-[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="6_vplmo"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="7_roc81"]
+[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="6_vplmo"]
+[ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="7_roc81"]
 
 [node name="World2" type="Node2D"]
 

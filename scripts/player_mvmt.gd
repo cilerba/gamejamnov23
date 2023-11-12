@@ -7,6 +7,7 @@ var camera: Camera2D
 # Resources
 @export var sprite_jump: Texture2D
 @export var sprite_walk: Texture2D
+@export var sprite_wall: Texture2D
 
 #move variables
 var speed = 125.0;
@@ -14,6 +15,7 @@ var jump_velocity = -300.0;
 var acceleration = 0.7;
 var air_acceleration = 0.35;
 var friction = 0.15;
+var can_move: bool = false
 
 var can_double_jump = true;
 var double_jump_velocity = jump_velocity * 0.65;
@@ -37,14 +39,34 @@ var can_animate: bool
 var can_hold: bool # If the player is pressing up against a wall
 var is_holding: bool # If the player is sliding down
 var fall_timer: float # Timer to see how long the player can hold onto the wall
-var fall_cap: float = 0.5 # The limit at which the timer should count up to
+var fall_cap: float = 0.8 # The limit at which the timer should count up to
 
 func _ready():
 	timer_on = true;
 	camera = get_node("../Camera2D")
+	
+	# Timer!
+	# This is to create a small delay when a scene is starting to prevent jumping when teleporting
+	
+	# Use 'create_timer' to add a temporary timer to the tree of the scene heirarchy
+	# 'await' is a keyword that pauses code execution until a signal is emitted
+	# This turns '_ready' into a coroutine for doc reference
+	var timer = get_tree().create_timer(0.5)
+	await timer.timeout
+	can_move = true
+	
 
 #timer
-func _process(delta):	
+func _process(delta):
+	# This if statement is just to make sure camera exists before setting its position
+	# Just being a little cautious :o)
+	if (camera):
+		camera.position = position
+
+	# If the player can't move, break out of '_process' to prevent the code below from executing
+	if (!can_move):
+		return
+	
 	if timer_on:
 		timer += delta;
 		if timer >= 0.30:
@@ -58,9 +80,6 @@ func _process(delta):
 			sprite.frame_coords.x = (sprite.frame_coords.x + 1) % sprite.hframes
 	
 	anim_player(delta)
-	
-	if (camera):
-		camera.position = position
 	
 	can_hold = is_on_wall_only() && sign(velocity.y) == 1
 	
@@ -94,7 +113,7 @@ func _physics_process(delta):
 	#wall jump
 	wall_jump();
 	
-	if !timer_on:
+	if !timer_on && can_move:
 		#player input and movement
 		move_player();
 	move_and_slide();
@@ -107,7 +126,10 @@ func anim_player(delta):
 	
 	if (!is_on_floor()):
 		sprite.hframes = 1
-		sprite.texture = sprite_jump
+		if (can_hold):
+			sprite.texture = sprite_wall
+		else:
+			sprite.texture = sprite_jump
 	else:
 		sprite.hframes = 4
 		sprite.texture = sprite_walk

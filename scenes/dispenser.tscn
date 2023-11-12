@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4kk5urpkob8l"]
+
+[ext_resource type="Texture2D" uid="uid://by468pjisiv3q" path="res://sprites/obj_dispenser.png" id="1_pb0hx"]
+[ext_resource type="Script" path="res://scripts/dispenser.gd" id="2_xaoxf"]
+
+[node name="Dispenser" type="Sprite2D"]
+position = Vector2(-72, 24)
+texture = ExtResource("1_pb0hx")
+script = ExtResource("2_xaoxf")
+dispense_interval = 2.0
