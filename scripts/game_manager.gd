@@ -8,12 +8,14 @@ enum Rooms
 {
 	Room1, # = 0
 	Room2, # = 1
+	Room3,
 	GameOver,
 }
 
 var room_dict: = {
 	Rooms.Room1: "res://scenes/room.tscn",
 	Rooms.Room2: "res://scenes/room_2.tscn",
+	Rooms.Room3: "res://scenes/room_3.tscn",
 	Rooms.GameOver: "res://scenes/game_over.tscn"
 }
 
