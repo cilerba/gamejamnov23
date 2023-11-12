@@ -37,8 +37,14 @@ func _physics_process(delta):
 	#wall jump
 	wall_jump();
 	
-
+	#player input and movement
+	move_player();
+	move_and_slide();
+	
+	
+#functions
 	#get input direction and apply acceleration or friction
+func move_player():
 	var dir = Input.get_axis("ui_left", "ui_right")
 	if dir:
 		if is_on_floor():
@@ -48,7 +54,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction);
 
-	move_and_slide();
 	
 func double_jump():
 	if not is_on_floor() && can_double_jump == true:
@@ -62,4 +67,5 @@ func wall_jump():
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.x = wall_normal.x * wall_jump_push;
 			velocity.y = jump_velocity;
+			
 			can_wall_jump = false;
