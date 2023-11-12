@@ -166,6 +166,7 @@ func wall_jump():
 		
 	if is_on_wall_only() && can_wall_jump == true:
 		if Input.is_action_just_pressed("ui_accept"):
+			is_holding = false
 			velocity.x = wall_normal.x * wall_jump_push;
 			velocity.y = jump_velocity;
 			
