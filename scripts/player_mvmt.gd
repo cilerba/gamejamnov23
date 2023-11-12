@@ -188,14 +188,21 @@ func wall_jump():
 			can_wall_jump = false;
 
 func hurt():
-	if (GameManager.health <= 0 && !is_hurt):
+	if (is_hurt):
+		return
+	
+	can_move = false
+	can_animate = false
+	sprite.hframes = 1
+	sprite.frame_coords = Vector2i(0, 0)
+	sprite.texture = sprite_hurt
+	velocity.x = wall_jump_push * (1 if sprite.flip_h else -1)
+	velocity.y = jump_velocity/2;
+	
+	if (GameManager.health <= 0):
 		if (flicker && flicker.is_running):
 			flicker.stop()
 		is_hurt = true
-		can_animate = false
-		sprite.hframes = 1
-		sprite.frame_coords = Vector2i(0, 0)
-		sprite.texture = sprite_hurt
 		visible = true
 		var fall_tween = create_tween()
 		fall_tween.tween_property(sprite, "position", sprite.position - Vector2(0, 32), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
@@ -204,7 +211,10 @@ func hurt():
 		spin_tween.tween_property(sprite, "rotation_degrees", 270 * 4, 2.5)
 		await fall_tween.finished
 	
-		var on_transition = func(): get_tree().change_scene_to_file(GameManager.room_dict[GameManager.Rooms.GameOver])
+		var on_transition = func():
+			if (GameManager.current_time > GameManager.best_time):
+				GameManager.best_time = GameManager.current_time
+			get_tree().change_scene_to_file(GameManager.room_dict[GameManager.Rooms.GameOver])
 		
 		GameManager.transition(on_transition)
 	else:
@@ -220,5 +230,8 @@ func hurt():
 		flicker.tween_property(self, "modulate", Color.TRANSPARENT, 0).set_delay(delay)
 		flicker.tween_property(self, "modulate", Color.WHITE, 0).set_delay(delay)
 		flicker.tween_callback(func():
+			velocity.x = 0
+			can_move = true
+			can_animate = true
 			GameManager.invincible = false)
 		

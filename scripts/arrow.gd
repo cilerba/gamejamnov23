@@ -7,8 +7,9 @@ var lifetime_counter: float
 var velocity: Vector2
 
 func on_hurt(body):
-	GameManager.health -= 1
-	queue_free()
+	if (!GameManager.invincible):
+		GameManager.health -= 1
+		queue_free()
 
 func _process(delta):
 	position += velocity * move_speed * delta

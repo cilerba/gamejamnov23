@@ -14,7 +14,8 @@ func _process(delta):
 	if in_fire:
 		hurt_timer += delta;
 		if hurt_timer >= 1.25:
-			GameManager.health -= 1;
+			if (!GameManager.invincible):
+				GameManager.health -= 1;
 			hurt_timer = 0.0;
 
 func on_hurt(body):
