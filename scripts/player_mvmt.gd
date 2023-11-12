@@ -34,12 +34,19 @@ var anim_timer: = 0.0
 var anim_speed: = 0.15
 var can_animate: bool
 
+var can_hold: bool # If the player is pressing up against a wall
+var is_holding: bool # If the player is sliding down
+var fall_timer: float # Timer to see how long the player can hold onto the wall
+var fall_cap: float = 0.5 # The limit at which the timer should count up to
+
 func _ready():
 	timer_on = true;
 	camera = get_node("../Camera2D")
 
 #timer
 func _process(delta):
+	print(friction)
+	
 	if timer_on:
 		timer += delta;
 		if timer >= 0.30:
@@ -57,11 +64,22 @@ func _process(delta):
 	if (camera):
 		camera.position = position
 	
+	can_hold = is_on_wall_only() && sign(velocity.y) == 1
+	
+	if (can_hold):
+		fall_timer += delta
+		is_holding = fall_timer < fall_cap
+	
 #movement
 func _physics_process(delta):
 	#add gravity when in air
 	if not is_on_floor():
 		velocity.y += gravity * delta;
+		
+		if (can_hold && is_holding): # Halve the gravity to slow the player's fall if they are in a holding state
+			velocity.y *= 0.5
+	else:
+		fall_timer = 0 # Reset the fall_timer when the player hits the ground
 
 	#jump from floor
 	if is_on_floor():
@@ -123,6 +141,7 @@ func double_jump():
 			
 func wall_jump():
 	var wall_normal = get_wall_normal();
+		
 	if is_on_wall_only() && can_wall_jump == true:
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.x = wall_normal.x * wall_jump_push;
