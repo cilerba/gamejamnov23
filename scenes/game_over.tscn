@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://beek06npuxdcq"]
+[gd_scene load_steps=7 format=3 uid="uid://beek06npuxdcq"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_73h81"]
 [ext_resource type="LabelSettings" uid="uid://c4hcu4nvxxe1a" path="res://labelsettings_main.tres" id="1_5746x"]
 [ext_resource type="FontFile" uid="uid://bpafijb2ons1s" path="res://fonts/PressStart2P-Regular.ttf" id="2_7wtnx"]
+[ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="2_hblj7"]
+[ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="4_2pstp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqcgw"]
 font = ExtResource("2_7wtnx")
@@ -14,15 +16,12 @@ script = ExtResource("1_73h81")
 current_time = NodePath("CanvasLayer/SCORE")
 best_time = NodePath("CanvasLayer/SCORE2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_hblj7")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 2, 0, 65536, 2, 0, 131072, 2, 0, 196609, 2, 0, 196610, 2, 0, 196611, 2, 0, 196612, 2, 0, 131076, 2, 0, 131077, 2, 0, 65541, 2, 0, 5, 2, 0, 4, 2, 0, 3, 2, 0, 2, 2, 0, 1, 2, 0, 131071, 2, 0, 196607, 2, 0, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 65535, 2, 0, 0, 2, 0, -65536, 2, 0, -65535, 2, 0, 262145, 2, 0, 262146, 2, 0, 327682, 2, 0, 327683, 2, 0, 262147, 2, 0, 262143, 2, 0, 196608, 2, 0, 262144, 2, 0, 262148, 2, 0, 262149, 2, 0, 196613, 2, 0, 196614, 2, 0, 131078, 2, 0, 131079, 2, 0, 65543, 2, 0, 65542, 2, 0, 6, 2, 0, 327681, 2, 0, 327684, 2, 0, 327685, 2, 0, 262150, 2, 0, 262151, 2, 0, 196615, 2, 0, -65532, 2, 0, -65533, 2, 0, 7, 2, 0, -65530, 2, 0, -65531, 2, 0, -65534, 2, 0, 327679, 2, 0, 393215, 2, 0, 327680, 2, 0, 327686, 2, 0, 327687, 2, 0, -65529, 2, 0, -1, 2, 0, -65528, 2, 0, 8, 2, 0, 65544, 2, 0, 131080, 2, 0, 196616, 2, 0, 262152, 2, 0, 327688, 2, 0, 393224, 2, 0, 393223, 2, 0, 393222, 2, 0, 393221, 2, 0, 393220, 2, 0, 393219, 2, 0, 393218, 2, 0, 393217, 2, 0, 458751, 2, 0, 393216, 2, 0, 458750, 2, 0, 393214, 2, 0, 327678, 2, 0, 262142, 2, 0, 196606, 2, 0, 131070, 2, 0, 65534, 2, 0, -2, 2, 0, -65538, 2, 0, -65537, 2, 0, -131072, 2, 0, -131071, 2, 0, -131070, 2, 0, -131069, 2, 0, -131068, 2, 0, -131067, 2, 0, -131066, 2, 0, -131065, 2, 0, -131064, 2, 0)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
@@ -77,3 +76,22 @@ grow_horizontal = 2
 label_settings = SubResource("LabelSettings_xqcgw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HUD" parent="." instance=ExtResource("4_2pstp")]
+
+[node name="CurrentTime" parent="HUD" index="0"]
+visible = false
+
+[node name="BestTime" parent="HUD" index="1"]
+visible = false
+
+[node name="TextureRect" parent="HUD" index="2"]
+visible = false
+
+[node name="TextureRect2" parent="HUD" index="3"]
+visible = false
+
+[node name="TextureRect3" parent="HUD" index="4"]
+visible = false
+
+[editable path="HUD"]

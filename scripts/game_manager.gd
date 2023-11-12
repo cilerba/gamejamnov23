@@ -25,11 +25,15 @@ var health: int:
 		player_hurt.emit()
 		
 		if (health <= 0):
-			get_tree().change_scene_to_file(room_dict[Rooms.GameOver])
+			game_running = false
+			var on_transition = func(): get_tree().change_scene_to_file(room_dict[Rooms.GameOver])
+			
+			transition(on_transition)
 	get:
 		return health
-		
+
 var game_running: bool
+var keys: int
 
 # Saved variables
 
@@ -39,6 +43,7 @@ var best_time: float
 # Signals
 
 signal player_hurt
+signal do_transition
 
 func _ready():
 	game_running = true
@@ -66,6 +71,9 @@ func load_time():
 		
 		json.parse(line)
 		best_time = json.get_data()
+
+func transition(on_transition: Callable = Callable(), on_complete: Callable = Callable(), delay: float = 0.5):
+	do_transition.emit(on_transition, on_complete, delay)
 
 # todo: format later
 func time_convert(time_in_sec):

@@ -1,5 +1,6 @@
 extends Area2D
 
+var following_body
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -7,11 +8,11 @@ func _ready():
 
 func on_body_enter(body):
 	if (body.get_name() == "Player"):
-		print("got key!");
-		body.has_key += 1;
-		print(body.has_key);
+		GameManager.keys += 1
+		following_body = body
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if (following_body):
+		position = lerp(position, following_body.position + Vector2(16 * (1 if following_body.sprite.flip_h else -1), 5), delta * 20)

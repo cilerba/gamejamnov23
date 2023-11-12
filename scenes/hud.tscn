@@ -1,13 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnkfnyn4mk316"]
+[gd_scene load_steps=9 format=3 uid="uid://dnkfnyn4mk316"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_h8oae"]
 [ext_resource type="LabelSettings" uid="uid://c4hcu4nvxxe1a" path="res://labelsettings_main.tres" id="2_aq7sn"]
 [ext_resource type="FontFile" uid="uid://bpafijb2ons1s" path="res://fonts/PressStart2P-Regular.ttf" id="3_a657q"]
+[ext_resource type="Shader" uid="uid://ccw2wy65mxf6x" path="res://shaders/transition.tres" id="4_05qo7"]
+[ext_resource type="Texture2D" uid="uid://bkuhq16ixvlhf" path="res://sprites/trans_circ.png" id="5_3cu54"]
+[ext_resource type="Script" path="res://scripts/screen_transition.gd" id="6_sb6km"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rnpxv"]
 font = ExtResource("3_a657q")
 font_size = 8
 font_color = Color(0.462745, 0.462745, 0.462745, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0q7pt"]
+shader = ExtResource("4_05qo7")
+shader_parameter/Alpha = null
+shader_parameter/Progress = 1.0
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("hearts")]
 script = ExtResource("1_h8oae")
@@ -54,3 +62,12 @@ offset_left = 44.0
 offset_top = 4.0
 offset_right = 60.0
 offset_bottom = 20.0
+
+[node name="ScreenTransition" type="TextureRect" parent="."]
+texture_filter = 2
+material = SubResource("ShaderMaterial_0q7pt")
+offset_right = 960.0
+offset_bottom = 640.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_3cu54")
+script = ExtResource("6_sb6km")

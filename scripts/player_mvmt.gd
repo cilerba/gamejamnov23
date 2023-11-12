@@ -64,7 +64,7 @@ func _process(delta):
 		camera.position = position
 
 	# If the player can't move, break out of '_process' to prevent the code below from executing
-	if (!can_move):
+	if (!can_move || ScreenTransition.is_transitioning):
 		return
 	
 	if timer_on:
@@ -88,7 +88,7 @@ func _process(delta):
 		is_holding = fall_timer < fall_cap
 	
 #movement
-func _physics_process(delta):
+func _physics_process(delta):	
 	#add gravity when in air
 	if not is_on_floor():
 		velocity.y += gravity * delta;
@@ -113,7 +113,7 @@ func _physics_process(delta):
 	#wall jump
 	wall_jump();
 	
-	if !timer_on && can_move:
+	if !timer_on && can_move && !ScreenTransition.is_transitioning:
 		#player input and movement
 		move_player();
 	move_and_slide();
