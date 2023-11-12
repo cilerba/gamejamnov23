@@ -19,15 +19,14 @@ var rot_dict: = {
 func _process(delta):
 	# The visibleOnScreenNotifier2D sets 'is_on_screen' if the dispenser is in the Camera's view
 	# This is useful to disable arrow dispensing if the dispenser is off-screen to make it fair to the player
-	if (!notifier.is_on_screen()):
-		return
-	
+
 	dispense_timer += delta
 	if (dispense_timer >= dispense_interval):
-		var instance = arrow.instantiate()
-		instance.position = position
-		instance.rotation_degrees = snapped(rotation_degrees, 90.0)
-		instance.velocity = rot_dict[snapped(rotation_degrees, 90.0)]
-		get_tree().root.add_child(instance)
+		if (notifier.is_on_screen()):
+			var instance = arrow.instantiate()
+			instance.position = position
+			instance.rotation_degrees = snapped(rotation_degrees, 90.0)
+			instance.velocity = rot_dict[snapped(rotation_degrees, 90.0)]
+			get_tree().root.add_child(instance)
 		dispense_timer = 0
 
