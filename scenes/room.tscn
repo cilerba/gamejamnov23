@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqvkbjjjsl6pd"]
+[gd_scene load_steps=11 format=3 uid="uid://dqvkbjjjsl6pd"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5t4rg"]
-[ext_resource type="Texture2D" uid="uid://blxjf0jh5g8mp" path="res://sprites/player_stuck.png" id="2_qhs67"]
 [ext_resource type="PackedScene" uid="uid://7dy2wisecsh7" path="res://scenes/key.tscn" id="4_kpjnc"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="5_d2f4b"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="6_olac2"]
@@ -15,7 +14,6 @@
 [node name="World2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5t4rg")]
-sprite_wall = ExtResource("2_qhs67")
 
 [node name="Key" parent="." instance=ExtResource("4_kpjnc")]
 
