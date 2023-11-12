@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqvkbjjjsl6pd"]
+[gd_scene load_steps=10 format=3 uid="uid://dqvkbjjjsl6pd"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5t4rg"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_xe7v7"]
 [ext_resource type="Script" path="res://scripts/key.gd" id="4_5ay7h"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="5_d2f4b"]
-[ext_resource type="PackedScene" path="res://scenes/teleport.tscn" id="6_psmnq"]
-[ext_resource type="PackedScene" uid="uid://dahkr8n38svs8" path="res://scenes/world_2.tscn" id="7_ide84"]
+[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="6_psmnq"]
 [ext_resource type="Texture2D" uid="uid://dr2p23afx6fhw" path="res://sprites/autotile_ground.png" id="8_euq2p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncyp8"]
@@ -517,7 +516,7 @@ shape = SubResource("CircleShape2D_ncyp8")
 [node name="Spike" parent="." instance=ExtResource("5_d2f4b")]
 
 [node name="Teleport" parent="." instance=ExtResource("6_psmnq")]
-destination = ExtResource("7_ide84")
+destination = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_3gv6w")
