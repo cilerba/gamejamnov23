@@ -44,9 +44,7 @@ func _ready():
 	camera = get_node("../Camera2D")
 
 #timer
-func _process(delta):
-	print(friction)
-	
+func _process(delta):	
 	if timer_on:
 		timer += delta;
 		if timer >= 0.30:
