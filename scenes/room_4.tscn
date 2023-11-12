@@ -19,10 +19,7 @@ layer_0/tile_data = PackedInt32Array(-131067, 524288, 1, 196612, 524288, 3, 1310
 [node name="CollisionShape2D" parent="Fire" index="0"]
 position = Vector2(195, 140)
 
-[node name="CollisionShape2D" parent="Fire/StaticBody2D" index="0"]
-position = Vector2(188, 139)
-
-[node name="AnimatedSprite2D" parent="Fire" index="2"]
+[node name="AnimatedSprite2D" parent="Fire" index="1"]
 position = Vector2(195, 134)
 
 [node name="Dispenser2" parent="." index="9"]
@@ -50,10 +47,7 @@ position = Vector2(-332, -133)
 [node name="CollisionShape2D" parent="Fire2" index="0"]
 position = Vector2(195, 140)
 
-[node name="CollisionShape2D" parent="Fire2/StaticBody2D" index="0"]
-position = Vector2(188, 139)
-
-[node name="AnimatedSprite2D" parent="Fire2" index="2"]
+[node name="AnimatedSprite2D" parent="Fire2" index="1"]
 position = Vector2(195, 134)
 
 [node name="Fire3" parent="." index="16" instance=ExtResource("4_bfi0r")]
@@ -62,10 +56,7 @@ position = Vector2(-318, -133)
 [node name="CollisionShape2D" parent="Fire3" index="0"]
 position = Vector2(195, 140)
 
-[node name="CollisionShape2D" parent="Fire3/StaticBody2D" index="0"]
-position = Vector2(188, 139)
-
-[node name="AnimatedSprite2D" parent="Fire3" index="2"]
+[node name="AnimatedSprite2D" parent="Fire3" index="1"]
 position = Vector2(195, 134)
 
 [node name="Fire4" parent="." index="17" instance=ExtResource("4_bfi0r")]
@@ -74,10 +65,7 @@ position = Vector2(-304, -133)
 [node name="CollisionShape2D" parent="Fire4" index="0"]
 position = Vector2(195, 140)
 
-[node name="CollisionShape2D" parent="Fire4/StaticBody2D" index="0"]
-position = Vector2(188, 139)
-
-[node name="AnimatedSprite2D" parent="Fire4" index="2"]
+[node name="AnimatedSprite2D" parent="Fire4" index="1"]
 position = Vector2(195, 134)
 
 [node name="Fire5" parent="." index="18" instance=ExtResource("4_bfi0r")]
@@ -86,10 +74,7 @@ position = Vector2(-290, -133)
 [node name="CollisionShape2D" parent="Fire5" index="0"]
 position = Vector2(195, 140)
 
-[node name="CollisionShape2D" parent="Fire5/StaticBody2D" index="0"]
-position = Vector2(188, 139)
-
-[node name="AnimatedSprite2D" parent="Fire5" index="2"]
+[node name="AnimatedSprite2D" parent="Fire5" index="1"]
 position = Vector2(195, 134)
 
 [editable path="Spike"]
