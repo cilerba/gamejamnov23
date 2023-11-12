@@ -33,6 +33,7 @@ func _process(delta):
 	#if player is in the teleport area and hits enter, they teleport to a new map
 	if entered == true:
 		if Input.is_action_just_pressed("ui_accept"):
+			GameManager.play("res://sounds/teleport.wav")
 			var on_complete = func():
 				get_tree().change_scene_to_file(GameManager.room_dict[destination])
 				

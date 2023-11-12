@@ -135,9 +135,10 @@ func _physics_process(delta):
 		can_wall_jump = true;
 		if Input.is_action_just_pressed("ui_accept") && !is_interacting:
 			velocity.y = jump_velocity;
+			GameManager.play("res://sounds/jump.wav")
 			in_jump = true
 	elif (Input.is_action_just_released("ui_accept") && sign(velocity.y) == -1):
-		velocity.y = jump_velocity/2
+		velocity.y = jump_velocity/4
 	else:
 		#double jump
 		double_jump();
@@ -193,6 +194,7 @@ func double_jump():
 	if not is_on_floor() && can_double_jump == true && not is_on_wall_only():
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = double_jump_velocity;
+			GameManager.play("res://sounds/doublejump.wav")
 			can_double_jump = false;
 			
 func wall_jump():
@@ -203,13 +205,14 @@ func wall_jump():
 			is_holding = false
 			velocity.x = wall_normal.x * wall_jump_push;
 			velocity.y = jump_velocity;
-			
+			GameManager.play("res://sounds/walljump.wav")
 			timer_on = true;
 			can_wall_jump = false;
 
 func hurt():
 	if (is_hurt):
 		return
+	GameManager.invincible = true
 	
 	can_move = false
 	can_animate = false
@@ -220,6 +223,7 @@ func hurt():
 	velocity.y = jump_velocity/2;
 	
 	if (GameManager.health <= 0):
+		GameManager.play("res://sounds/gameover.wav")
 		if (flicker && flicker.is_running):
 			flicker.stop()
 		is_hurt = true
@@ -238,7 +242,6 @@ func hurt():
 		
 		GameManager.transition(on_transition)
 	else:
-		GameManager.invincible = true
 		var delay = 0.1
 		if (flicker && flicker.is_running()):
 			flicker.stop()

@@ -10,6 +10,7 @@ var raycast: RayCast2D
 
 func _ready():
 	super()
+	GameManager.play("res://sounds/arrow.wav")
 	raycast = get_child(2)
 	
 func on_hurt(body):

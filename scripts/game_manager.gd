@@ -30,6 +30,7 @@ var health: int:
 		
 		if (health <= 0):
 			game_running = false
+			stopbgm()
 	get:
 		return health
 
@@ -48,7 +49,22 @@ signal player_hurt
 signal do_transition
 signal hide_key
 
+const CHANNEL_MAX = 16
+
+var channels: Array[AudioStreamPlayer]
+var bgm: AudioStreamPlayer
+
 func _ready():
+	for i in range(0, CHANNEL_MAX):
+		var c = AudioStreamPlayer.new()
+		channels.append(c)
+		add_child(c)
+	
+	bgm = AudioStreamPlayer.new()
+	add_child(bgm)
+	bgm.stream = load("res://sounds/cavegame.wav")
+	bgm.play()
+		
 	game_running = true
 	health = MAX_HEARTS
 
@@ -82,3 +98,16 @@ func transition(on_transition: Callable = Callable(), on_complete: Callable = Ca
 func time_convert(time_in_sec):
 	var mseconds = time_in_sec
 	return "%0.2f" % [mseconds]
+
+func play(path):
+	for i in channels:
+		if !i.playing:
+			i.stream = load(path)
+			i.play()
+			return true
+
+	print("No available channels!")	
+	return false
+
+func stopbgm():
+	bgm.stop()

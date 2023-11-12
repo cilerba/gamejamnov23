@@ -10,6 +10,7 @@ func _ready():
 func on_body_enter(body):
 	if (body.get_name() == "Player" && !following_body):
 		GameManager.keys += 1
+		GameManager.play("res://sounds/getcrystal.wav")
 		following_body = body
 	
 
