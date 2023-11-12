@@ -46,6 +46,11 @@ var is_interacting: bool # Set in teleport script, if true it disables jumping w
 var is_hurt: bool
 var flicker: Tween
 
+var coyote_timer: float
+var coyote_cap: float = 0.2
+var coyote_on: bool
+var in_jump: bool
+
 func _ready():
 	timer_on = true;
 	camera = get_node("../Camera2D")
@@ -97,6 +102,15 @@ func _process(delta):
 		fall_timer += delta
 		is_holding = fall_timer < fall_cap
 	
+	coyote_on = !is_on_floor() && coyote_timer < coyote_cap && !in_jump
+	
+	if (is_on_floor()):
+		coyote_timer = 0.0
+	else:
+		coyote_timer += delta
+		
+	print (coyote_on)
+	
 #movement
 func _physics_process(delta):
 	if (is_hurt):
@@ -109,10 +123,12 @@ func _physics_process(delta):
 		if (can_hold && is_holding): # Halve the gravity to slow the player's fall if they are in a holding state
 			velocity.y *= 0.5
 	else:
+		in_jump = false
 		fall_timer = 0 # Reset the fall_timer when the player hits the ground
 
+
 	#jump from floor
-	if is_on_floor():
+	if is_on_floor() || coyote_on:
 		if timer_on == true:
 			timer_on = false;
 			timer = 0.0;
@@ -120,8 +136,13 @@ func _physics_process(delta):
 		can_wall_jump = true;
 		if Input.is_action_just_pressed("ui_accept") && !is_interacting:
 			velocity.y = jump_velocity;
-	#double jump
-	double_jump();
+			in_jump = true
+	elif (Input.is_action_just_released("ui_accept") && sign(velocity.y) == -1):
+		velocity.y = jump_velocity/2
+	else:
+		#double jump
+		double_jump();
+	
 	
 	#wall jump
 	wall_jump();

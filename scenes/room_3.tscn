@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbatf3jockj4v"]
+[gd_scene load_steps=9 format=3 uid="uid://dbatf3jockj4v"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_w15ao"]
-[ext_resource type="Texture2D" uid="uid://blxjf0jh5g8mp" path="res://sprites/player_stuck.png" id="2_c0a02"]
 [ext_resource type="PackedScene" uid="uid://7dy2wisecsh7" path="res://scenes/key.tscn" id="4_4top2"]
 [ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="6_hi5y2"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="7_ht8ib"]
@@ -14,7 +13,6 @@
 
 [node name="Player" parent="." instance=ExtResource("1_w15ao")]
 position = Vector2(-7, -16)
-sprite_wall = ExtResource("2_c0a02")
 
 [node name="Key" parent="." instance=ExtResource("4_4top2")]
 position = Vector2(89, -225)
