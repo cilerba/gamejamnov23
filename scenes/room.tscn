@@ -67,7 +67,11 @@ position_smoothing_speed = 20.0
 
 [node name="Fire" parent="." instance=ExtResource("10_lqfvo")]
 
-[node name="Dispenser" parent="." instance=ExtResource("11_jj5vd")]
+[node name="Dispenser2" parent="." instance=ExtResource("11_jj5vd")]
+position = Vector2(-42, 24)
+rotation = 1.57079
+
+[node name="Dispenser3" parent="." instance=ExtResource("11_jj5vd")]
 position = Vector2(56, -8)
 
 [editable path="Spike"]

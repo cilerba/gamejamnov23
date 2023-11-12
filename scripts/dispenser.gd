@@ -18,7 +18,8 @@ func _process(delta):
 	dispense_timer += delta
 	if (dispense_timer >= dispense_interval):
 		var instance = arrow.instantiate()
-		instance.rotation = rotation
-		instance.velocity = rot_dict[rotation]
-		add_child(instance)
+		instance.position = position
+		instance.rotation_degrees = snapped(rotation_degrees, 90.0)
+		instance.velocity = rot_dict[snapped(rotation_degrees, 90.0)]
+		get_tree().root.add_child(instance)
 		dispense_timer = 0
