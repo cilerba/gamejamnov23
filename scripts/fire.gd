@@ -1,13 +1,26 @@
 class_name Fire extends Obstacle
 
-func on_hurt(body):
-	print("hot!");
+@export var sprite: AnimatedSprite2D
 
-# Called when the node enters the scene tree for the first time.
+var in_fire = false;
+var hurt_timer = 0.0;
+
 func _ready():
-	pass # Replace with function body.
-
-
+	super();
+	sprite.play();
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if in_fire:
+		hurt_timer += delta;
+		if hurt_timer >= 1.25:
+			GameManager.health -= 1;
+			hurt_timer = 0.0;
+
+func on_hurt(body):
+	in_fire = true;
+	GameManager.health -= 1;
+
+func on_hurt_exit(body):
+	in_fire = false;
+	

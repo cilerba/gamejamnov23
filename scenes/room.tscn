@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqvkbjjjsl6pd"]
+[gd_scene load_steps=12 format=3 uid="uid://dqvkbjjjsl6pd"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5t4rg"]
 [ext_resource type="PackedScene" uid="uid://c170pcrqmpo58" path="res://scenes/platform.tscn" id="3_xe7v7"]
 [ext_resource type="Script" path="res://scripts/key.gd" id="4_5ay7h"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="5_d2f4b"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="6_olac2"]
-[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="6_psmnq"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="7_qvym7"]
+[ext_resource type="PackedScene" path="res://scenes/teleport.tscn" id="6_psmnq"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="7_qvym7"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="7_uhqmi"]
-[ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="9_tqodj"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="9_tqodj"]
+[ext_resource type="PackedScene" uid="uid://bwp25rx2o2gjd" path="res://scenes/fire.tscn" id="10_lqfvo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncyp8"]
 radius = 6.02772
@@ -60,3 +61,8 @@ layer_0/tile_data = PackedInt32Array(-720910, 2, 0, -655374, 2, 0, -589838, 2, 0
 position_smoothing_speed = 20.0
 
 [node name="HUD" parent="." instance=ExtResource("9_tqodj")]
+
+[node name="Fire" parent="." instance=ExtResource("10_lqfvo")]
+
+[editable path="Spike"]
+[editable path="Fire"]
