@@ -8,7 +8,7 @@ func _ready():
 	GameManager.hide_key.connect(hide_key)
 
 func on_body_enter(body):
-	if (body.get_name() == "Player"):
+	if (body.get_name() == "Player" && !following_body):
 		GameManager.keys += 1
 		following_body = body
 	
