@@ -29,4 +29,9 @@ func _process(delta):
 			instance.velocity = rot_dict[snapped(rotation_degrees, 90.0)]
 			get_tree().root.add_child(instance)
 		dispense_timer = 0
-
+	elif (dispense_timer >= dispense_interval * 0.5):
+		frame = 2
+	else:
+		frame = 0
+		
+		

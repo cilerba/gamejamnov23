@@ -35,7 +35,7 @@ position = Vector2(0.5, 20)
 shape = SubResource("RectangleShape2D_2ulqw")
 
 [node name="CollisionShape2D_DUCK" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 26)
+position = Vector2(0.5, 20)
 shape = ExtResource("6_dnp4g")
 disabled = true
 
