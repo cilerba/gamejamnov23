@@ -1,5 +1,13 @@
 extends CharacterBody2D
 
+# Nodes
+@export var sprite: Sprite2D
+var camera: Camera2D
+
+# Resources
+@export var sprite_jump: Texture2D
+@export var sprite_walk: Texture2D
+
 #move variables
 var speed = 125.0;
 var jump_velocity = -300.0;
@@ -21,8 +29,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity");
 var timer = 0.0;
 var timer_on = false;
 
+# Animation
+var anim_timer: = 0.0
+var anim_speed: = 0.15
+var can_animate: bool
+
 func _ready():
 	timer_on = true;
+	camera = get_node("../Camera2D")
 
 #timer
 func _process(delta):
@@ -31,6 +45,18 @@ func _process(delta):
 		if timer >= 0.30:
 			timer_on = false;
 			timer = 0.0;
+	
+	if (can_animate):		
+		anim_timer += delta
+		if (anim_timer >= anim_speed):
+			anim_timer = 0
+			sprite.frame_coords.x = (sprite.frame_coords.x + 1) % sprite.hframes
+	
+	anim_player(delta)
+	
+	if (camera):
+		camera.position = position
+	
 #movement
 func _physics_process(delta):
 	#add gravity when in air
@@ -59,6 +85,24 @@ func _physics_process(delta):
 	
 	
 
+func anim_player(delta):
+	if (sign(velocity.x) != 0):
+		sprite.flip_h = false if sign(velocity.x) == 1 else true
+	
+	if (!is_on_floor()):
+		sprite.hframes = 1
+		sprite.texture = sprite_jump
+	else:
+		sprite.hframes = 4
+		sprite.texture = sprite_walk
+	
+	# Only animate the player if they're moving and grounded
+	if (Input.get_axis("ui_left", "ui_right") != 0 && is_on_floor()):
+		can_animate = true
+	else:
+		can_animate = false
+		sprite.frame_coords = Vector2i(0,0) # reset the frames when disabling can_animate
+		
 	#get input direction and apply acceleration or friction
 func move_player():
 	var dir = Input.get_axis("ui_left", "ui_right")
