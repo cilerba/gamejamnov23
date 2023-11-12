@@ -9,20 +9,15 @@ func _ready():
 	curr_label = get_child(0)
 	best_label = get_child(1)
 	
-	best_label.text = time_convert(GameManager.best_time)
+	best_label.text = GameManager.time_convert(GameManager.best_time)
 	
 	GameManager.player_hurt.connect(update_hp)
 	
 func _process(delta):
 	if (GameManager.game_running):
-		curr_label.text = time_convert(GameManager.current_time)
+		curr_label.text = GameManager.time_convert(GameManager.current_time)
 		
-		best_label.text = time_convert(GameManager.best_time)
-
-# todo: format later
-func time_convert(time_in_sec):
-	var mseconds = time_in_sec
-	return "%0.2f" % [mseconds]
+		best_label.text = GameManager.time_convert(GameManager.best_time)
 
 func update_hp():
 	for i in range(0, 3):

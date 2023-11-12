@@ -8,11 +8,13 @@ enum Rooms
 {
 	Room1, # = 0
 	Room2, # = 1
+	GameOver,
 }
 
 var room_dict: = {
 	Rooms.Room1: "res://scenes/room.tscn",
 	Rooms.Room2: "res://scenes/room_2.tscn",
+	Rooms.GameOver: "res://scenes/game_over.tscn"
 }
 
 # Temp variables
@@ -21,6 +23,9 @@ var health: int:
 	set(value):
 		health = value
 		player_hurt.emit()
+		
+		if (health <= 0):
+			get_tree().change_scene_to_file(room_dict[Rooms.GameOver])
 	get:
 		return health
 		
@@ -61,3 +66,8 @@ func load_time():
 		
 		json.parse(line)
 		best_time = json.get_data()
+
+# todo: format later
+func time_convert(time_in_sec):
+	var mseconds = time_in_sec
+	return "%0.2f" % [mseconds]
