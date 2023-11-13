@@ -1,20 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvwatokadsao2"]
+[gd_scene load_steps=9 format=3 uid="uid://bvwatokadsao2"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_0cw8b"]
-[ext_resource type="Texture2D" uid="uid://blxjf0jh5g8mp" path="res://sprites/player_stuck.png" id="2_t6opl"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="4_qk3vq"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="6_l3bw6"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="7_k7avm"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="8_3klf5"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="8_3klf5"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="9_8otxg"]
-[ext_resource type="PackedScene" path="res://scenes/teleport_nokey.tscn" id="9_ssntv"]
+[ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="9_ssntv"]
 [ext_resource type="PackedScene" uid="uid://bwp25rx2o2gjd" path="res://scenes/fire.tscn" id="10_3m1ag"]
 
 [node name="World3" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0cw8b")]
 position = Vector2(-98, -65)
-sprite_wall = ExtResource("2_t6opl")
 
 [node name="Spike" parent="." instance=ExtResource("4_qk3vq")]
 position = Vector2(-88, 24)
@@ -73,9 +71,11 @@ position = Vector2(-45, 44)
 
 [node name="Teleport" parent="." instance=ExtResource("9_ssntv")]
 position = Vector2(184, -39)
+destination = 3
 
 [node name="Teleport2" parent="." instance=ExtResource("9_ssntv")]
 position = Vector2(-106, -55)
+destination = 8
 
 [editable path="Spike"]
 [editable path="Fire"]

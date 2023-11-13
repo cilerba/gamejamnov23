@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dbatf3jockj4v"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_w15ao"]
-[ext_resource type="PackedScene" path="res://scenes/teleport_nokey.tscn" id="7_esnia"]
+[ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="7_esnia"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="7_ht8ib"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="8_7niet"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="9_4eoj0"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="9_4eoj0"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="10_kb46r"]
 [ext_resource type="PackedScene" uid="uid://c4kk5urpkob8l" path="res://scenes/dispenser.tscn" id="12_kel21"]
 
@@ -59,6 +59,8 @@ rotation = 4.71239
 
 [node name="Teleport" parent="." instance=ExtResource("7_esnia")]
 position = Vector2(-37, -199)
+destination = 11
 
 [node name="Teleport2" parent="." instance=ExtResource("7_esnia")]
 position = Vector2(-39, -7)
+destination = 8
