@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3mw0kd4bewk8"]
+[gd_scene load_steps=10 format=3 uid="uid://3mw0kd4bewk8"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_uckbk"]
 [ext_resource type="Texture2D" uid="uid://blxjf0jh5g8mp" path="res://sprites/player_stuck.png" id="2_s6ox6"]
@@ -8,8 +8,6 @@
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="7_63ep8"]
 [ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="8_1vpj0"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="9_oylxg"]
-[ext_resource type="PackedScene" uid="uid://bwp25rx2o2gjd" path="res://scenes/fire.tscn" id="10_gn47v"]
-[ext_resource type="PackedScene" uid="uid://c4kk5urpkob8l" path="res://scenes/dispenser.tscn" id="11_88f5g"]
 [ext_resource type="PackedScene" path="res://scenes/teleport_nokey.tscn" id="11_hx8vf"]
 
 [node name="World3" type="Node2D"]
@@ -21,7 +19,16 @@ sprite_wall = ExtResource("2_s6ox6")
 [node name="Key" parent="." instance=ExtResource("3_auer1")]
 
 [node name="Spike" parent="." instance=ExtResource("4_b1gx1")]
-position = Vector2(-88, 24)
+position = Vector2(-120, 25)
+
+[node name="Spike2" parent="." instance=ExtResource("4_b1gx1")]
+position = Vector2(-103, 25)
+
+[node name="Spike3" parent="." instance=ExtResource("4_b1gx1")]
+position = Vector2(-86, 25)
+
+[node name="Spike4" parent="." instance=ExtResource("4_b1gx1")]
+position = Vector2(-69, 25)
 
 [node name="LevelTileMap" type="TileMap" parent="."]
 tile_set = ExtResource("6_8qm2w")
@@ -42,15 +49,6 @@ position_smoothing_speed = 20.0
 
 [node name="HUD" parent="." instance=ExtResource("9_oylxg")]
 
-[node name="Fire" parent="." instance=ExtResource("10_gn47v")]
-
-[node name="Dispenser2" parent="." instance=ExtResource("11_88f5g")]
-position = Vector2(-42, 24)
-rotation = 1.57079
-
-[node name="Dispenser3" parent="." instance=ExtResource("11_88f5g")]
-position = Vector2(56, -8)
-
 [node name="Teleport" parent="." instance=ExtResource("11_hx8vf")]
 position = Vector2(182, -156)
 
@@ -58,4 +56,6 @@ position = Vector2(182, -156)
 position = Vector2(217, -58)
 
 [editable path="Spike"]
-[editable path="Fire"]
+[editable path="Spike2"]
+[editable path="Spike3"]
+[editable path="Spike4"]
