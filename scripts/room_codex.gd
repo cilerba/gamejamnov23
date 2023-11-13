@@ -11,8 +11,8 @@ extends Node
 #I: room_13
 #J: 
 #K: room_11
-#L
-#M
+#L: room_16
+#M: room_5
 #N
 #O
 #P
