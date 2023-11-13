@@ -165,4 +165,7 @@ destination = 14
 [node name="HealthUp" parent="." instance=ExtResource("12_uh5ul")]
 position = Vector2(485, -177)
 
+[node name="HealthUp2" parent="." instance=ExtResource("12_uh5ul")]
+position = Vector2(-47, -192)
+
 [editable path="Teleport"]
