@@ -9,6 +9,18 @@ enum Rooms
 	Room1, # = 0
 	Room2, # = 1
 	Room3,
+	Room4,
+	Room5,
+	Room6,
+	Room7,
+	Room8,
+	Room9,
+	Room10,
+	Room11,
+	Room12,
+	Room13,
+	Room14,
+	Room15,
 	GameEnd,
 	GameOver,
 }
@@ -17,12 +29,13 @@ var room_dict: = {
 	Rooms.Room1: "res://scenes/room.tscn",
 	Rooms.Room2: "res://scenes/room_2.tscn",
 	Rooms.Room3: "res://scenes/room_3.tscn",
+	Rooms.Room15: "res://scenes/room_15.tscn",
 	Rooms.GameEnd: "res://scenes/game_end.tscn",
 	Rooms.GameOver: "res://scenes/game_over.tscn"
 }
 
 # Temp variables
-
+# Get reset when reloaded
 
 var health: int:
 	set(value): # Godot passes variable's new value as an argument
@@ -41,7 +54,11 @@ var invincible: bool
 var game_running: bool
 var keys: int
 
+var key_ids: Array[Rooms]
+var current_key_sprite: String
+
 # Saved variables
+# Stored in file, parsed on load
 
 var current_time: float
 var best_time: float

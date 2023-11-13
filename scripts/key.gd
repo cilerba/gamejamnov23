@@ -1,23 +1,22 @@
 extends Area2D
 
-var following_body;
+@export var key_id: GameManager.Rooms
+var sprite: Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if (GameManager.key_ids.has(key_id)):
+		queue_free()
+	
 	body_entered.connect(on_body_enter);
-	GameManager.hide_key.connect(hide_key)
+	sprite = get_child(1)
 	
 func on_body_enter(body):
-	if (body.get_name() == "Player" && !following_body):
+	if (body.get_name() == "Player"):
+		queue_free()
+		GameManager.current_key_sprite = sprite.texture.get_path()
+		body.key_sprite.texture = sprite.texture
+		body.key_sprite.visible = true
+		GameManager.key_ids.append(key_id)
 		GameManager.keys += 1
 		GameManager.play("res://sounds/getcrystal.wav")
-		following_body = body
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if (following_body):
-		position = lerp(position, following_body.position + Vector2(16 * (1 if following_body.sprite.flip_h else -1), 5), delta * 20)
-
-func hide_key():
-	queue_free()

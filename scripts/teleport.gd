@@ -22,6 +22,7 @@ func on_body_enter(body):
 		return
 	
 	if (GameManager.keys > 0):
+		GameManager.keys -= 1
 		sprite2d.frame_coords.x = 1
 		sprite_anim.play()
 		GameManager.hide_key.emit()

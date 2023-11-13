@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bg3j8psnims47"]
+[gd_scene load_steps=12 format=3 uid="uid://bg3j8psnims47"]
 
 [ext_resource type="Script" path="res://scripts/player_mvmt.gd" id="1_mgnv3"]
 [ext_resource type="Texture2D" uid="uid://ith75wtsvj4i" path="res://sprites/player_walk.png" id="2_g38ku"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bbetvkbdaxrid" path="res://sprites/player_hurt.png" id="5_twntf"]
 [ext_resource type="Shape2D" uid="uid://bddpsvw4d5rx5" path="res://player_rect_walk.tres" id="6_dnp4g"]
 [ext_resource type="Texture2D" uid="uid://dd218liv5wy0a" path="res://sprites/player_walk_duck.png" id="6_icguj"]
+[ext_resource type="Texture2D" uid="uid://uq35shl4jeqb" path="res://sprites/obj_key.png" id="9_vocx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ulqw"]
 size = Vector2(13, 25)
@@ -15,23 +16,29 @@ size = Vector2(13, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32ky8"]
 size = Vector2(2, 2)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "key_sprite")]
 script = ExtResource("1_mgnv3")
-sprite = NodePath("Smoothing2D/Sprite2D")
+sprite = NodePath("Smoothing2D/PlayerSprite")
 sprite_jump = ExtResource("2_to18f")
 sprite_walk = ExtResource("2_g38ku")
 sprite_wall = ExtResource("4_c8i8w")
 sprite_hurt = ExtResource("5_twntf")
 sprite_duck = ExtResource("6_icguj")
+key_sprite = NodePath("Smoothing2D/KeySprite")
 
 [node name="Smoothing2D" type="Node2D" parent="."]
 script = ExtResource("4_0ndmq")
 
-[node name="Sprite2D" type="Sprite2D" parent="Smoothing2D"]
+[node name="PlayerSprite" type="Sprite2D" parent="Smoothing2D"]
 z_index = 1
 position = Vector2(0, 16)
 texture = ExtResource("2_g38ku")
 hframes = 4
+
+[node name="KeySprite" type="Sprite2D" parent="Smoothing2D"]
+visible = false
+position = Vector2(0, -7)
+texture = ExtResource("9_vocx5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 19.5)

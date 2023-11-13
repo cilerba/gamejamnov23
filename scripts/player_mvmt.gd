@@ -57,16 +57,25 @@ var coyote_cap: float = 0.2
 var coyote_on: bool
 var in_jump: bool
 
+@export var key_sprite: Sprite2D
+
 func _ready():
 	timer_on = true;
 	camera = get_node("../Camera2D")
 	
+	if (GameManager.keys > 0):
+		key_sprite.texture = load(GameManager.current_key_sprite)
+		key_sprite.visible = true
 	
 	GameManager.hp_change.connect(hp_change)
 	
 	cs_walk = get_child(1)
 	cs_duck = get_child(2)
 	shapecast = get_child(3)
+	
+	# Gets emitted when player comes into contact with Teleport scene
+	GameManager.hide_key.connect(hide_key)
+	
 	# Timer!
 	# This is to create a small delay when a scene is starting to prevent jumping when teleporting
 	
@@ -79,6 +88,12 @@ func _ready():
 
 #timer
 func _process(delta):
+	
+	
+	if (Input.is_action_just_pressed("ui_cut")):
+		get_tree().change_scene_to_file(GameManager.room_dict[GameManager.Rooms.Room15])
+		return
+	
 	if (in_death_anim):
 		return
 	
@@ -281,3 +296,5 @@ func hp_change(hurt):
 			can_animate = true
 			GameManager.invincible = false)
 		
+func hide_key():
+	key_sprite.visible = false
