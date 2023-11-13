@@ -94,6 +94,14 @@ func _ready():
 #timer
 func _process(delta):
 	
+	if (flicker):
+		if (!flicker.is_running()):
+			GameManager.invincible = false
+		elif (flicker.is_running() && flicker.get_loops_left() <= 2):
+			velocity.x = 0
+			can_move = true
+			can_animate = true
+	
 	if (in_death_anim):
 		return
 	
@@ -286,15 +294,7 @@ func hp_change(hurt):
 		flicker = create_tween()
 		flicker.tween_property(self, "modulate", Color.TRANSPARENT, 0).set_delay(delay)
 		flicker.tween_property(self, "modulate", Color.WHITE, 0).set_delay(delay)
-		flicker.tween_property(self, "modulate", Color.TRANSPARENT, 0).set_delay(delay)
-		flicker.tween_property(self, "modulate", Color.WHITE, 0).set_delay(delay)
-		flicker.tween_property(self, "modulate", Color.TRANSPARENT, 0).set_delay(delay)
-		flicker.tween_property(self, "modulate", Color.WHITE, 0).set_delay(delay)
-		flicker.tween_callback(func():
-			velocity.x = 0
-			can_move = true
-			can_animate = true
-			GameManager.invincible = false)
+		flicker.set_loops(4)
 		
 func hide_key():
 	key_sprite.visible = false
