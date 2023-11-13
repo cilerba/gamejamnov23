@@ -13,7 +13,6 @@ func _process(_delta):
 		var on_transition = func():
 			get_tree().change_scene_to_file(GameManager.curr_room)
 			GameManager.health = GameManager.MAX_HEARTS
-			GameManager.current_time = 0.0
 			GameManager.game_running = true
 		
 		var on_complete = func():
