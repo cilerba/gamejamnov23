@@ -82,6 +82,9 @@ var keys: int
 var key_ids: Array[Rooms]
 var current_key_sprite: String
 
+var to_pos: Vector2
+var do_reposition: bool
+
 # Saved variables
 # Stored in file, parsed on load
 
