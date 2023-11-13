@@ -125,7 +125,7 @@ func _process(delta):
 	
 	if timer_on:
 		timer += delta;
-		if timer >= 0.30:
+		if timer >= 0.50:
 			timer_on = false;
 			timer = 0.0;
 	
