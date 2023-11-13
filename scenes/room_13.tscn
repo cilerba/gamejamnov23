@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm5f8dcie5hci"]
+[gd_scene load_steps=11 format=3 uid="uid://dm5f8dcie5hci"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_tqphq"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="2_yrhvj"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://7dy2wisecsh7" path="res://scenes/key.tscn" id="7_x8muu"]
 [ext_resource type="Texture2D" uid="uid://c6h4jq3utqhm" path="res://sprites/obj_key_pink.png" id="8_eox6l"]
 [ext_resource type="PackedScene" uid="uid://dn8nhn1ekc57i" path="res://scenes/health_up.tscn" id="9_m7aes"]
+[ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="10_16m0k"]
 
 [node name="World3" type="Node2D"]
 
@@ -67,5 +68,8 @@ texture = ExtResource("8_eox6l")
 
 [node name="HealthUp" parent="." instance=ExtResource("9_m7aes")]
 position = Vector2(74, -251)
+
+[node name="Teleport" parent="." instance=ExtResource("10_16m0k")]
+position = Vector2(-183, 55)
 
 [editable path="Key"]
