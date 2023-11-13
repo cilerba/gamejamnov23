@@ -22,7 +22,6 @@ func on_body_enter(body):
 		return
 	
 	if (GameManager.keys > 0):
-		GameManager.keys -= 1
 		sprite2d.frame_coords.x = 1
 		sprite_anim.play()
 		GameManager.hide_key.emit()
@@ -49,7 +48,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_accept") && GameManager.keys > 0:
 			GameManager.play("res://sounds/teleport.wav")
 			var on_complete = func():
-				GameManager.keys = 0
+				GameManager.keys -= 1
 				get_tree().change_scene_to_file(GameManager.room_dict[destination])
 				
 			GameManager.transition(on_complete)
