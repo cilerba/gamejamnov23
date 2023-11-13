@@ -89,11 +89,6 @@ func _ready():
 #timer
 func _process(delta):
 	
-	
-	if (Input.is_action_just_pressed("ui_cut")):
-		get_tree().change_scene_to_file(GameManager.room_dict[GameManager.Rooms.Room15])
-		return
-	
 	if (in_death_anim):
 		return
 	
@@ -237,7 +232,7 @@ func double_jump():
 func wall_jump():
 	var wall_normal = get_wall_normal();
 		
-	if is_on_wall_only() && can_wall_jump == true:
+	if is_on_wall_only() && can_wall_jump == true && is_holding:
 		if Input.is_action_just_pressed("ui_accept"):
 			is_holding = false
 			velocity.x = wall_normal.x * wall_jump_push;

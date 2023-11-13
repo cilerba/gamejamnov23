@@ -90,11 +90,6 @@ func _ready():
 func _process(delta):
 	if (game_running):
 		current_time += delta
-	
-	if (Input.is_action_just_pressed("ui_cut")):
-		health -= 1
-	elif (Input.is_action_just_pressed("ui_paste")):
-		load_time()
 		
 func save_time():
 	var save_game = FileAccess.open("user://game.sav", FileAccess.WRITE)
