@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8eaty8ufoo3w"]
+[gd_scene load_steps=20 format=3 uid="uid://b8eaty8ufoo3w"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5wbps"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="3_60ybi"]
@@ -9,11 +9,76 @@
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="7_eg7am"]
 [ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="8_ls634"]
 [ext_resource type="Texture2D" uid="uid://c0o4sft6djrn3" path="res://obj_door_pink.png" id="9_6vn87"]
+[ext_resource type="PackedScene" uid="uid://7dy2wisecsh7" path="res://scenes/key.tscn" id="10_80erm"]
+[ext_resource type="Texture2D" uid="uid://do3ld7p7cf6j4" path="res://sprites/sparkle_spritesheet.png" id="10_avbbk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0gik"]
+atlas = ExtResource("10_avbbk")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvbcr"]
+atlas = ExtResource("10_avbbk")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msjdr"]
+atlas = ExtResource("10_avbbk")
+region = Rect2(60, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjuk3"]
+atlas = ExtResource("10_avbbk")
+region = Rect2(75, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72lch"]
+atlas = ExtResource("10_avbbk")
+region = Rect2(90, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snyvr"]
+atlas = ExtResource("10_avbbk")
+region = Rect2(105, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl5oy"]
+atlas = ExtResource("10_avbbk")
+region = Rect2(120, 0, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_od1qd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0gik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvbcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msjdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjuk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72lch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snyvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl5oy")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="World3" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5wbps")]
-position = Vector2(-296, -176)
+position = Vector2(796, -198)
 
 [node name="LevelTileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_qe3tj")
@@ -88,5 +153,12 @@ destination = 15
 
 [node name="Sprite2D" parent="Teleport" index="1"]
 texture = ExtResource("9_6vn87")
+
+[node name="AnimatedSprite2D" parent="Teleport/Sprite2D" index="0"]
+sprite_frames = SubResource("SpriteFrames_od1qd")
+
+[node name="Key" parent="." instance=ExtResource("10_80erm")]
+position = Vector2(824, -183)
+key_id = 10
 
 [editable path="Teleport"]
