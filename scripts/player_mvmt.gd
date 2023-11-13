@@ -60,6 +60,7 @@ var in_jump: bool
 @export var key_sprite: Sprite2D
 
 func _ready():
+	GameManager.curr_room = get_tree().current_scene.scene_file_path
 	
 	if (GameManager.do_reposition): # If there's a reposition Vector2 stored in GameManager
 		position = GameManager.to_pos # Reposition the player to the stored Vector2 in GameManager

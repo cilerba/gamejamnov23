@@ -85,6 +85,8 @@ var current_key_sprite: String
 var to_pos: Vector2
 var do_reposition: bool
 
+var curr_room: String
+
 # Saved variables
 # Stored in file, parsed on load
 
