@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqvkbjjjsl6pd"]
+[gd_scene load_steps=11 format=3 uid="uid://dqvkbjjjsl6pd"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5t4rg"]
-[ext_resource type="Texture2D" uid="uid://blxjf0jh5g8mp" path="res://sprites/player_stuck.png" id="2_qhs67"]
 [ext_resource type="PackedScene" uid="uid://7dy2wisecsh7" path="res://scenes/key.tscn" id="4_kpjnc"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="5_d2f4b"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="6_olac2"]
 [ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="6_psmnq"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="7_qvym7"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="7_qvym7"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="7_uhqmi"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="9_tqodj"]
 [ext_resource type="PackedScene" uid="uid://bwp25rx2o2gjd" path="res://scenes/fire.tscn" id="10_lqfvo"]
@@ -15,7 +14,6 @@
 [node name="World3" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5t4rg")]
-sprite_wall = ExtResource("2_qhs67")
 
 [node name="Key" parent="." instance=ExtResource("4_kpjnc")]
 
