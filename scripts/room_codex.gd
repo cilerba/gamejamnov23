@@ -12,7 +12,7 @@ extends Node
 #J: 
 #K: room_11
 #L: room_16
-#M: room_5
+#M: room_5 & room_5copy
 #N
 #O
 #P
