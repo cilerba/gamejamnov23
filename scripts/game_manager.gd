@@ -23,14 +23,17 @@ var room_dict: = {
 
 # Temp variables
 
+
 var health: int:
-	set(value):
-		health = value
-		player_hurt.emit()
+	set(value): # Godot passes variable's new value as an argument
+		var hurt = health > value # Expression returns bool true/false
+		health = value # To actually change the variable, set it to the new value
+				
+		hp_change.emit(hurt) # Emit signal whenever this variable changes
 		
-		if (health <= 0):
-			game_running = false
-			stopbgm()
+		if (health <= 0): # Simple gameover check
+			game_running = false # Stop the clock!!!!!!!
+			stopbgm() # Stop the bgm channel, defined below
 	get:
 		return health
 
@@ -45,7 +48,7 @@ var best_time: float
 
 # Signals
 
-signal player_hurt
+signal hp_change(hurt)
 signal do_transition
 signal hide_key
 

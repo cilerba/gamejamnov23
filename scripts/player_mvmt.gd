@@ -49,7 +49,7 @@ var fall_timer: float # Timer to see how long the player can hold onto the wall
 var fall_cap: float = 0.8 # The limit at which the timer should count up to
 
 var is_interacting: bool # Set in teleport script, if true it disables jumping when interacting with an object/teleporting
-var is_hurt: bool
+var in_death_anim: bool
 var flicker: Tween
 
 var coyote_timer: float
@@ -62,7 +62,7 @@ func _ready():
 	camera = get_node("../Camera2D")
 	
 	
-	GameManager.player_hurt.connect(hurt)
+	GameManager.hp_change.connect(hp_change)
 	
 	cs_walk = get_child(1)
 	cs_duck = get_child(2)
@@ -79,7 +79,7 @@ func _ready():
 
 #timer
 func _process(delta):
-	if (is_hurt):
+	if (in_death_anim):
 		return
 	
 	# This if statement is just to make sure camera exists before setting its position
@@ -130,7 +130,7 @@ func _process(delta):
 	
 #movement
 func _physics_process(delta):
-	if (is_hurt):
+	if (in_death_anim):
 		return
 	
 	#add gravity when in air
@@ -173,7 +173,7 @@ func _physics_process(delta):
 	
 
 func anim_player(delta):
-	if (is_hurt):
+	if (in_death_anim):
 		return
 		
 	if (sign(velocity.x) != 0):
@@ -231,9 +231,10 @@ func wall_jump():
 			timer_on = true;
 			can_wall_jump = false;
 
-func hurt():
-	if (is_hurt):
+func hp_change(hurt):
+	if (in_death_anim || !hurt):
 		return
+	
 	GameManager.invincible = true
 	
 	can_move = false
@@ -248,7 +249,7 @@ func hurt():
 		GameManager.play("res://sounds/gameover.wav")
 		if (flicker && flicker.is_running):
 			flicker.stop()
-		is_hurt = true
+		in_death_anim = true
 		visible = true
 		var fall_tween = create_tween()
 		fall_tween.tween_property(sprite, "position", sprite.position - Vector2(0, 32), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)

@@ -13,14 +13,14 @@ func _ready():
 	
 	best_label.text = GameManager.time_convert(GameManager.best_time)
 	
-	GameManager.player_hurt.connect(update_hp)
+	GameManager.hp_change.connect(update_hp)
 	
 func _process(delta):
 	if (GameManager.game_running):
 		curr_label.text = GameManager.time_convert(GameManager.current_time)
 		best_label.text = GameManager.time_convert(GameManager.best_time)
 
-func update_hp():
+func update_hp(hurt):
 	for i in range(0, 3):
 		hearts[i].texture = heart_full if i < GameManager.health else heart_empty
 			
