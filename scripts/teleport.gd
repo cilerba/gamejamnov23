@@ -9,6 +9,8 @@ var sprite2d: Sprite2D
 var sprite_anim: AnimatedSprite2D
 var sine_time: float
 
+var unlocked: bool
+
 #connect signals
 func _ready():
 	body_entered.connect(on_body_enter);
@@ -22,11 +24,12 @@ func on_body_enter(body):
 	if (body.get_name() != "Player"):
 		return
 	
-	if (GameManager.keys > 0):
+	if (GameManager.keys > 0 && !unlocked):
 		sprite2d.frame_coords.x = 1
 		sprite_anim.play()
 		GameManager.hide_key.emit()
 		GameManager.play("res://sounds/placecrystal.wav")
+		unlocked = true
 	
 	body.is_interacting = true
 	entered = true;
