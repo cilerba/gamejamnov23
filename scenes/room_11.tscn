@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b8eaty8ufoo3w"]
+[gd_scene load_steps=21 format=3 uid="uid://b8eaty8ufoo3w"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5wbps"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="3_60ybi"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c0o4sft6djrn3" path="res://obj_door_pink.png" id="9_6vn87"]
 [ext_resource type="Texture2D" uid="uid://do3ld7p7cf6j4" path="res://sprites/sparkle_spritesheet.png" id="10_avbbk"]
 [ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="12_5svrs"]
+[ext_resource type="PackedScene" uid="uid://dn8nhn1ekc57i" path="res://scenes/health_up.tscn" id="12_uh5ul"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0gik"]
 atlas = ExtResource("10_avbbk")
@@ -160,5 +161,8 @@ sprite_frames = SubResource("SpriteFrames_od1qd")
 [node name="Teleport2" parent="." instance=ExtResource("12_5svrs")]
 position = Vector2(-288, -172)
 destination = 14
+
+[node name="HealthUp" parent="." instance=ExtResource("12_uh5ul")]
+position = Vector2(485, -177)
 
 [editable path="Teleport"]
