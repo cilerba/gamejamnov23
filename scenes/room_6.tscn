@@ -86,10 +86,6 @@ rotation = 3.14159
 position = Vector2(-359, 135)
 rotation = 3.14159
 
-[node name="Teleport" parent="." instance=ExtResource("8_pxqgd")]
-position = Vector2(37, -216)
-destination = 10
-
 [node name="Teleport2" parent="." instance=ExtResource("8_pxqgd")]
 position = Vector2(-296, 87)
 destination = 15

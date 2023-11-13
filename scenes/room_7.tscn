@@ -80,7 +80,7 @@ notifier = NodePath("../Dispenser3/VisibleOnScreenNotifier2D")
 
 [node name="Teleport2" parent="." instance=ExtResource("12_0m0ex")]
 position = Vector2(282, -167)
-destination = 10
+destination = 14
 
 [node name="Teleport" parent="." instance=ExtResource("12_0m0ex")]
 position = Vector2(228, -9)
