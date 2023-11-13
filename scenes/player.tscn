@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg3j8psnims47"]
+[gd_scene load_steps=11 format=3 uid="uid://bg3j8psnims47"]
 
 [ext_resource type="Script" path="res://scripts/player_mvmt.gd" id="1_mgnv3"]
 [ext_resource type="Texture2D" uid="uid://ith75wtsvj4i" path="res://sprites/player_walk.png" id="2_g38ku"]
@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://dd218liv5wy0a" path="res://sprites/player_walk_duck.png" id="6_icguj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ulqw"]
-size = Vector2(13, 24)
+size = Vector2(13, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32ky8"]
+size = Vector2(2, 2)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_mgnv3")
@@ -31,7 +34,7 @@ texture = ExtResource("2_g38ku")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 20)
+position = Vector2(0.5, 19.5)
 shape = SubResource("RectangleShape2D_2ulqw")
 
 [node name="CollisionShape2D_DUCK" type="CollisionShape2D" parent="."]
@@ -39,6 +42,7 @@ position = Vector2(0.5, 26)
 shape = ExtResource("6_dnp4g")
 disabled = true
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
 position = Vector2(-6, 8)
+shape = SubResource("RectangleShape2D_32ky8")
 target_position = Vector2(13, 0)

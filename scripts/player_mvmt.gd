@@ -13,7 +13,7 @@ var camera: Camera2D
 
 var cs_walk: CollisionShape2D
 var cs_duck: CollisionShape2D
-var raycast: RayCast2D
+var shapecast: ShapeCast2D
 
 #move variables
 var speed = 125.0;
@@ -66,7 +66,7 @@ func _ready():
 	
 	cs_walk = get_child(1)
 	cs_duck = get_child(2)
-	raycast = get_child(3)
+	shapecast = get_child(3)
 	# Timer!
 	# This is to create a small delay when a scene is starting to prevent jumping when teleporting
 	
@@ -96,7 +96,7 @@ func _process(delta):
 	if (Input.is_action_pressed("ui_down")):
 		cs_duck.disabled = false
 		cs_walk.disabled = true
-	elif (!raycast.is_colliding()):
+	elif (!shapecast.is_colliding()):
 		cs_walk.disabled = false
 		cs_duck.disabled = true
 	
