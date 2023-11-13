@@ -176,6 +176,7 @@ position = Vector2(248, -231)
 
 [node name="Teleport" parent="." instance=ExtResource("10_yblgx")]
 position = Vector2(-153, 136)
+destination = 21
 
 [editable path="Spike"]
 [editable path="Spike2"]

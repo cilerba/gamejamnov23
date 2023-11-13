@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8eaty8ufoo3w"]
+[gd_scene load_steps=10 format=3 uid="uid://b8eaty8ufoo3w"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_5wbps"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="3_60ybi"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="4_qe3tj"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="5_bteei"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="6_0bk3p"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="6_0bk3p"]
 [ext_resource type="PackedScene" uid="uid://c4kk5urpkob8l" path="res://scenes/dispenser.tscn" id="6_8j6cc"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="7_eg7am"]
+[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="8_ls634"]
+[ext_resource type="Texture2D" uid="uid://c0o4sft6djrn3" path="res://obj_door_pink.png" id="9_6vn87"]
 
 [node name="World3" type="Node2D"]
 
@@ -79,3 +81,12 @@ position = Vector2(328, -136)
 
 [node name="Spike4" parent="." instance=ExtResource("3_60ybi")]
 position = Vector2(344, -136)
+
+[node name="Teleport" parent="." instance=ExtResource("8_ls634")]
+position = Vector2(884, -189)
+destination = 15
+
+[node name="Sprite2D" parent="Teleport" index="1"]
+texture = ExtResource("9_6vn87")
+
+[editable path="Teleport"]

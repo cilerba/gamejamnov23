@@ -71,5 +71,6 @@ position = Vector2(74, -251)
 
 [node name="Teleport" parent="." instance=ExtResource("10_16m0k")]
 position = Vector2(-183, 55)
+destination = 13
 
 [editable path="Key"]

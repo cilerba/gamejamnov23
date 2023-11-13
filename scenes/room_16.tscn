@@ -73,9 +73,11 @@ position_smoothing_speed = 20.0
 
 [node name="Teleport" parent="." instance=ExtResource("8_si7sg")]
 position = Vector2(-105, 73)
+destination = 4
 
 [node name="Teleport2" parent="." instance=ExtResource("8_si7sg")]
 position = Vector2(120, 74)
+destination = 18
 
 [editable path="Spike"]
 [editable path="Spike2"]

@@ -1,20 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://cclclj6oxr2ah"]
+[gd_scene load_steps=11 format=3 uid="uid://cclclj6oxr2ah"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_j6f21"]
-[ext_resource type="Texture2D" uid="uid://blxjf0jh5g8mp" path="res://sprites/player_stuck.png" id="2_8ntpx"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="4_yqg4j"]
 [ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="5_gx5n6"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="6_lw417"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="7_nilbu"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="8_sqhmr"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="8_sqhmr"]
+[ext_resource type="PackedScene" uid="uid://dn8nhn1ekc57i" path="res://scenes/health_up.tscn" id="9_pht1e"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="9_u3p0k"]
 [ext_resource type="PackedScene" uid="uid://bwp25rx2o2gjd" path="res://scenes/fire.tscn" id="10_dbjvm"]
+[ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="10_kunge"]
 
 [node name="World3" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_j6f21")]
-position = Vector2(-135, -129)
-sprite_wall = ExtResource("2_8ntpx")
+position = Vector2(-95, -129)
 
 [node name="Spike" parent="." instance=ExtResource("4_yqg4j")]
 position = Vector2(197, 264)
@@ -210,12 +210,9 @@ rotation = 3.14159
 position = Vector2(-127, -200)
 rotation = 3.14159
 
-[node name="Spike27" parent="." instance=ExtResource("4_yqg4j")]
-position = Vector2(199, 186)
-
 [node name="Teleport" parent="." instance=ExtResource("5_gx5n6")]
-position = Vector2(48, 185)
-destination = 1
+position = Vector2(48, 188)
+destination = 13
 
 [node name="LevelTileMap" type="TileMap" parent="."]
 tile_set = ExtResource("6_lw417")
@@ -238,6 +235,13 @@ position_smoothing_speed = 20.0
 
 [node name="Fire" parent="." instance=ExtResource("10_dbjvm")]
 position = Vector2(-31, 187)
+
+[node name="HealthUp" parent="." instance=ExtResource("9_pht1e")]
+position = Vector2(-200, 102)
+
+[node name="Teleport2" parent="." instance=ExtResource("10_kunge")]
+position = Vector2(-124, -119)
+destination = 2
 
 [editable path="Spike"]
 [editable path="Spike2"]
@@ -291,5 +295,4 @@ position = Vector2(-31, 187)
 [editable path="Spike51"]
 [editable path="Spike52"]
 [editable path="Spike53"]
-[editable path="Spike27"]
 [editable path="Fire"]

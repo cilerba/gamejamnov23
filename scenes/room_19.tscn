@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://ewxtsqd5b7ey"]
+[gd_scene load_steps=12 format=3 uid="uid://ewxtsqd5b7ey"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_a0bxv"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="2_hvhsj"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="3_4cxk0"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="4_yl6ju"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="4_yl6ju"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="5_afhcn"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="6_oih5g"]
 [ext_resource type="PackedScene" uid="uid://c4kk5urpkob8l" path="res://scenes/dispenser.tscn" id="7_l0jwd"]
-[ext_resource type="PackedScene" path="res://scenes/health_up.tscn" id="8_1hxw4"]
+[ext_resource type="PackedScene" uid="uid://dn8nhn1ekc57i" path="res://scenes/health_up.tscn" id="8_1hxw4"]
 [ext_resource type="PackedScene" uid="uid://bwp25rx2o2gjd" path="res://scenes/fire.tscn" id="9_5dfm5"]
+[ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="10_te5qs"]
+[ext_resource type="Texture2D" uid="uid://b0d1rtvael0xb" path="res://obj_door_blue.png" id="11_qkwf8"]
 
 [node name="World3" type="Node2D"]
 
@@ -197,3 +199,12 @@ position = Vector2(-120, -360)
 
 [node name="Spike31" parent="." instance=ExtResource("6_oih5g")]
 position = Vector2(-104, -360)
+
+[node name="Teleport" parent="." instance=ExtResource("10_te5qs")]
+position = Vector2(383, -403)
+destination = 22
+
+[node name="Sprite2D" parent="Teleport" index="1"]
+texture = ExtResource("11_qkwf8")
+
+[editable path="Teleport"]

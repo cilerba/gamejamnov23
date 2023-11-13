@@ -52,9 +52,11 @@ position = Vector2(37, 43)
 
 [node name="Teleport" parent="." instance=ExtResource("8_hajj4")]
 position = Vector2(-105, 73)
+destination = 6
 
 [node name="Teleport2" parent="." instance=ExtResource("8_hajj4")]
 position = Vector2(120, 74)
+destination = 12
 
 [editable path="Fire"]
 [editable path="Fire2"]
