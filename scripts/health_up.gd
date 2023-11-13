@@ -9,7 +9,7 @@ func _ready():
 func on_body_enter(body):
 	if (body.get_name() == "Player") && GameManager.health < GameManager.MAX_HEARTS:
 		GameManager.health += 1;
-		GameManager.play("res://sounds/getcrystal.wav")
+		GameManager.play("res://sounds/heart.wav")
 		queue_free();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
