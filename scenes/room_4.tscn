@@ -16,6 +16,7 @@
 [node name="Player" parent="." instance=ExtResource("1_e3mei")]
 
 [node name="Key" parent="." instance=ExtResource("2_k3d8d")]
+key_id = 3
 
 [node name="Spike" parent="." instance=ExtResource("3_4t4j5")]
 position = Vector2(-136, 136)

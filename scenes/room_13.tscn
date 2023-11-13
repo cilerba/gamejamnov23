@@ -62,6 +62,7 @@ position = Vector2(-120, -344)
 
 [node name="Key" parent="." instance=ExtResource("7_x8muu")]
 position = Vector2(137, -423)
+key_id = 12
 
 [node name="Sprite2D" parent="Key" index="1"]
 texture = ExtResource("8_eox6l")
