@@ -28,9 +28,11 @@ position = Vector2(-207, 107)
 [node name="Dispenser2" parent="." index="9"]
 position = Vector2(-38, 72)
 rotation = 4.71239
+hframes = 3
 
 [node name="Dispenser3" parent="." index="10"]
 position = Vector2(-56, 56)
+hframes = 3
 
 [node name="Fire2" parent="." index="11" instance=ExtResource("2_ctnq1")]
 position = Vector2(-191, 107)
@@ -47,6 +49,7 @@ position = Vector2(-143, 107)
 [node name="Dispenser4" parent="." index="15" instance=ExtResource("3_sintg")]
 position = Vector2(39, 72)
 rotation = 4.71239
+hframes = 3
 
 [node name="Spike2" parent="." index="16" instance=ExtResource("4_nck48")]
 position = Vector2(40, -136)
