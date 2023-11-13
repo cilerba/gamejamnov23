@@ -13,7 +13,7 @@ extends Node
 #K: room_11
 #L: room_16
 #M: room_5 & room_5copy
-#N
-#O
-#P
+#N: room_20
+#O: room_19
+#P: room_22
 #Win!
