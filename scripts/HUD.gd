@@ -13,6 +13,7 @@ func _ready():
 	
 	best_label.text = GameManager.time_convert(GameManager.best_time)
 	
+	update_hp(false)
 	GameManager.hp_change.connect(update_hp)
 	
 func _process(delta):
