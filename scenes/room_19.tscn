@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ewxtsqd5b7ey"]
+[gd_scene load_steps=23 format=3 uid="uid://ewxtsqd5b7ey"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_a0bxv"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="2_hvhsj"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://b0d1rtvael0xb" path="res://obj_door_blue.png" id="11_qkwf8"]
 [ext_resource type="Texture2D" uid="uid://do3ld7p7cf6j4" path="res://sprites/sparkle_spritesheet.png" id="12_1i4vj"]
 [ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="12_uj1id"]
-[ext_resource type="PackedScene" uid="uid://7dy2wisecsh7" path="res://scenes/key.tscn" id="14_k8g0c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12iv0"]
 atlas = ExtResource("12_1i4vj")
@@ -286,8 +285,5 @@ sprite_frames = SubResource("SpriteFrames_6tk8u")
 [node name="Teleport2" parent="." instance=ExtResource("12_uj1id")]
 position = Vector2(-343, -201)
 destination = 15
-
-[node name="Key" parent="." instance=ExtResource("14_k8g0c")]
-position = Vector2(342, -402)
 
 [editable path="Teleport"]
