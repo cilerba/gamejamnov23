@@ -1,6 +1,7 @@
 extends Area2D
 @export var destination: GameManager.Rooms
-
+@export var start_position: Vector2
+@export var do_reposition: bool
 
 var entered = false;
 
@@ -34,6 +35,9 @@ func _process(delta):
 	if entered == true:
 		if Input.is_action_just_pressed("ui_accept"):
 			GameManager.play("res://sounds/teleport.wav")
+			if (do_reposition):
+				GameManager.do_reposition = true
+				GameManager.to_pos = start_position
 			var on_complete = func():
 				get_tree().change_scene_to_file(GameManager.room_dict[destination])
 				
