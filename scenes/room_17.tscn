@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b74bbpud2ssja"]
+[gd_scene load_steps=12 format=3 uid="uid://vuoxt8kgx1hd"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_xy8pf"]
 [ext_resource type="PackedScene" uid="uid://7dy2wisecsh7" path="res://scenes/key.tscn" id="2_ejqxn"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="4_uskgy"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="5_8tcco"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="6_b7ep7"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="7_20f00"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="7_20f00"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="8_vj1i5"]
 [ext_resource type="PackedScene" uid="uid://bwp25rx2o2gjd" path="res://scenes/fire.tscn" id="9_r1xv1"]
 [ext_resource type="PackedScene" uid="uid://c4kk5urpkob8l" path="res://scenes/dispenser.tscn" id="10_mxacg"]

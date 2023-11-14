@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="6_1yv5t"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="7_s5wvt"]
 [ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="8_pxqgd"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="8_y8afp"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="8_y8afp"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="9_pnq1l"]
 [ext_resource type="PackedScene" uid="uid://c4kk5urpkob8l" path="res://scenes/dispenser.tscn" id="11_l3tma"]
 

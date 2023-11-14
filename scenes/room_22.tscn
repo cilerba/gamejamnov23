@@ -1,17 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://buoybhspt5trg"]
+[gd_scene load_steps=11 format=3 uid="uid://cluxow7wybsls"]
 
 [ext_resource type="PackedScene" uid="uid://bg3j8psnims47" path="res://scenes/player.tscn" id="1_wogm8"]
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="3_ij07b"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="5_7lquh"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="6_egv0m"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="7_q841h"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="7_q841h"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="8_qoixm"]
 [ext_resource type="PackedScene" uid="uid://bwp25rx2o2gjd" path="res://scenes/fire.tscn" id="9_ab0ea"]
-[ext_resource type="PackedScene" path="res://scenes/health_up.tscn" id="9_p6v48"]
+[ext_resource type="PackedScene" uid="uid://dn8nhn1ekc57i" path="res://scenes/health_up.tscn" id="9_p6v48"]
 [ext_resource type="PackedScene" uid="uid://c4kk5urpkob8l" path="res://scenes/dispenser.tscn" id="10_lrv7n"]
 [ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="10_p67yl"]
 
-[node name="World3" type="Node2D"]
+[node name="World4" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_wogm8")]
 position = Vector2(-310, 192)

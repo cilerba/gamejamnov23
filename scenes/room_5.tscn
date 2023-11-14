@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="4_nck48"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="5_112mv"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="6_2ee5u"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="7_vak2c"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="7_vak2c"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="8_xcipm"]
 [ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="11_4dwe1"]
 
-[node name="World1" type="Node2D"]
+[node name="World2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_tmwx3")]
 position = Vector2(-380, -210)

@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bwp25rx2o2gjd" path="res://scenes/fire.tscn" id="4_bfi0r"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="5_o5wdc"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="6_ustq5"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="7_clipu"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="7_clipu"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="8_oy8le"]
 [ext_resource type="PackedScene" uid="uid://c4kk5urpkob8l" path="res://scenes/dispenser.tscn" id="10_ssh4h"]
 [ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="11_q5r3y"]
 
-[node name="World1" type="Node2D"]
+[node name="World2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_e3mei")]
 

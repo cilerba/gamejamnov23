@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://slvuh8fkppux" path="res://scenes/spike.tscn" id="3_60ybi"]
 [ext_resource type="TileSet" uid="uid://c6lul5sokonvk" path="res://tileset.tres" id="4_qe3tj"]
 [ext_resource type="TileSet" uid="uid://cs8h18iqc82m7" path="res://tileset_bg.tres" id="5_bteei"]
-[ext_resource type="PackedScene" uid="uid://dowkiimiphx7j" path="res://scenes/camera.tscn" id="6_0bk3p"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="6_0bk3p"]
 [ext_resource type="PackedScene" uid="uid://c4kk5urpkob8l" path="res://scenes/dispenser.tscn" id="6_8j6cc"]
 [ext_resource type="PackedScene" uid="uid://dnkfnyn4mk316" path="res://scenes/hud.tscn" id="7_eg7am"]
 [ext_resource type="PackedScene" uid="uid://bt153ve2b75au" path="res://scenes/teleport.tscn" id="8_ls634"]
 [ext_resource type="Texture2D" uid="uid://c0o4sft6djrn3" path="res://obj_door_pink.png" id="9_6vn87"]
 [ext_resource type="Texture2D" uid="uid://do3ld7p7cf6j4" path="res://sprites/sparkle_spritesheet.png" id="10_avbbk"]
 [ext_resource type="PackedScene" uid="uid://cg6nwifqerstc" path="res://scenes/teleport_nokey.tscn" id="12_5svrs"]
-[ext_resource type="PackedScene" path="res://scenes/health_up.tscn" id="12_uh5ul"]
+[ext_resource type="PackedScene" uid="uid://dn8nhn1ekc57i" path="res://scenes/health_up.tscn" id="12_uh5ul"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0gik"]
 atlas = ExtResource("10_avbbk")
@@ -76,7 +76,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="World3" type="Node2D"]
+[node name="World4" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5wbps")]
 position = Vector2(-246, -179)
