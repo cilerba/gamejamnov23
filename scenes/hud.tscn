@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnkfnyn4mk316"]
+[gd_scene load_steps=12 format=3 uid="uid://dnkfnyn4mk316"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_h8oae"]
 [ext_resource type="LabelSettings" uid="uid://c4hcu4nvxxe1a" path="res://labelsettings_main.tres" id="2_aq7sn"]
 [ext_resource type="FontFile" uid="uid://bpafijb2ons1s" path="res://fonts/PressStart2P-Regular.ttf" id="3_a657q"]
 [ext_resource type="Texture2D" uid="uid://c1hel8lrij808" path="res://sprites/heart_empty.png" id="3_oykfb"]
-[ext_resource type="Shader" uid="uid://ccw2wy65mxf6x" path="res://shaders/transition.tres" id="4_05qo7"]
 [ext_resource type="Texture2D" uid="uid://hqgl26b18cjj" path="res://sprites/heart_full.png" id="4_hsv6e"]
 [ext_resource type="Texture2D" uid="uid://bkuhq16ixvlhf" path="res://sprites/trans_circ.png" id="5_3cu54"]
+[ext_resource type="Material" uid="uid://cvdoythrfm6wd" path="res://trans_mat.tres" id="6_0koae"]
 [ext_resource type="Script" path="res://scripts/screen_transition.gd" id="6_sb6km"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rnpxv"]
@@ -19,11 +19,6 @@ load_path = "res://.godot/imported/heart_full.png-88da036132eee203a71c8bf65a159d
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rc2i3"]
 load_path = "res://.godot/imported/heart_full.png-88da036132eee203a71c8bf65a159d69.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0q7pt"]
-shader = ExtResource("4_05qo7")
-shader_parameter/Alpha = null
-shader_parameter/Progress = 1.0
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("hearts")]
 script = ExtResource("1_h8oae")
@@ -78,7 +73,7 @@ texture = SubResource("CompressedTexture2D_rc2i3")
 
 [node name="ScreenTransition" type="TextureRect" parent="."]
 texture_filter = 2
-material = SubResource("ShaderMaterial_0q7pt")
+material = ExtResource("6_0koae")
 offset_right = 960.0
 offset_bottom = 640.0
 scale = Vector2(0.25, 0.25)

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cvdoythrfm6wd"]
+
+[ext_resource type="Shader" uid="uid://ccw2wy65mxf6x" path="res://shaders/transition.tres" id="1_em1j3"]
+
+[resource]
+shader = ExtResource("1_em1j3")
+shader_parameter/Alpha = null
+shader_parameter/Progress = 1.0

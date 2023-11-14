@@ -87,6 +87,9 @@ var do_reposition: bool
 
 var curr_room: String
 
+var is_transitioning: bool
+var progress: float = 1.0
+
 # Saved variables
 # Stored in file, parsed on load
 
