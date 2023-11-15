@@ -21,7 +21,7 @@ var speed_slow = 75.0
 var jump_velocity = -300.0;
 var acceleration = 0.7;
 var air_acceleration = 0.35;
-var friction = 0.15;
+var friction = 0.25;
 var can_move: bool = false
 
 var can_double_jump = true;
